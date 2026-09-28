@@ -7,105 +7,60 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================
-   الثيم الجديد: أخضر زيتي/أفوكادو متوسط + بيج دافئ
-   لا ساطع، لا داكن — هادئ وراقي
+   الثيم: أخضر زيتي متوسط + بيج دافئ (كما هو)
    ========================================================== */
 :root{
-  --bg:#f4f1e8;                /* بيج دافئ */
-  --bg-2:#eae5d5;
-  --surface:#fbf9f2;           /* أبيض بيج هادئ */
-  --surface-2:#f0ecdd;         /* بيج أعمق قليلًا */
-  --surface-3:#e3ddc9;         /* بيج غامق */
-  --text:#2c3a2c;              /* أخضر ترابي داكن للنص */
-  --text-muted:#6e7a68;        /* رمادي مخضر */
-  --border:#dcd5be;            /* حدود بيج */
-
-  /* الأخضر الأساسي — زيتي متوسط هادئ (بدون سطوع) */
-  --primary:#5e7d5e;            /* أخضر زيتي هادئ */
-  --primary-soft:#e3ebe0;       /* أخضر زيتي فاتح جدًا للخلفيات */
-  --primary-dark:#3f5a3f;       /* أخضر زيتي غامق للنص */
-  --primary-hover:#4f6d4f;      /* عند المرور */
-
-  /* الأخضر الخاص بالجمعة — نفس العائلة لكن أوضح */
+  --bg:#f4f1e8;
+  --surface:#fbf9f2;
+  --surface-2:#f0ecdd;
+  --surface-3:#e3ddc9;
+  --text:#2c3a2c;
+  --text-muted:#6e7a68;
+  --border:#dcd5be;
+  --primary:#5e7d5e;
+  --primary-soft:#e3ebe0;
+  --primary-dark:#3f5a3f;
+  --primary-hover:#4f6d4f;
   --friday:#7a9a6e;
   --friday-soft:#e6ede0;
   --friday-border:#b8c9ab;
-
   --success:#5e7d5e;
   --success-soft:#e3ebe0;
   --success-text:#3f5a3f;
-
-  /* ذهبي ترابي هادئ */
   --warning:#a08247;
   --warning-soft:#f2ead6;
   --warning-text:#75592a;
-
-  /* أحمر ترابي هادئ */
   --danger:#a26058;
   --danger-soft:#f0e0dc;
   --danger-text:#7a423b;
-
-  /* أزرق مخضر هادئ */
   --info:#5f7d8a;
   --info-soft:#e0e8ec;
-
   --radius:18px;
   --radius-sm:12px;
   --shadow:0 2px 10px rgba(60,70,50,.06);
   --shadow-md:0 4px 20px rgba(60,70,50,.09);
   --shadow-lg:0 12px 40px rgba(60,70,50,.14);
-
-  /* ألوان المواد */
   --math:#5e7d5e;
   --english:#9c6b78;
   --physics:#5f7d8a;
   --earth:#7a8a52;
 }
 [data-theme="dark"]{
-  --bg:#181c15;
-  --bg-2:#1e241b;
-  --surface:#222819;           /* أخضر داكن جدًا مائل للأزيتي */
-  --surface-2:#2a3022;
-  --surface-3:#333a2a;
-  --text:#e6e9de;
-  --text-muted:#9da394;
-  --border:#343c2a;
-
-  --primary:#7a9a6e;            /* زيتي أفتح قليلًا في الليلي */
-  --primary-soft:#283325;
-  --primary-dark:#a8c49a;
-  --primary-hover:#8aa87e;
-
-  --friday:#8aa87e;
-  --friday-soft:#242e1f;
-  --friday-border:#465339;
-
-  --success:#7a9a6e;
-  --success-soft:#283325;
-  --success-text:#a8c49a;
-
-  --warning:#c9a868;
-  --warning-soft:#332b1a;
-  --warning-text:#ddc085;
-
-  --danger:#c99086;
-  --danger-soft:#332320;
-  --danger-text:#dda89e;
-
-  --info:#8aa3ad;
-  --info-soft:#1f2a2e;
-
+  --bg:#181c15;--surface:#222819;--surface-2:#2a3022;--surface-3:#333a2a;
+  --text:#e6e9de;--text-muted:#9da394;--border:#343c2a;
+  --primary:#7a9a6e;--primary-soft:#283325;--primary-dark:#a8c49a;--primary-hover:#8aa87e;
+  --friday:#8aa87e;--friday-soft:#242e1f;--friday-border:#465339;
+  --success:#7a9a6e;--success-soft:#283325;--success-text:#a8c49a;
+  --warning:#c9a868;--warning-soft:#332b1a;--warning-text:#ddc085;
+  --danger:#c99086;--danger-soft:#332320;--danger-text:#dda89e;
+  --info:#8aa3ad;--info-soft:#1f2a2e;
   --shadow:0 2px 10px rgba(0,0,0,.4);
   --shadow-md:0 4px 20px rgba(0,0,0,.5);
   --shadow-lg:0 12px 40px rgba(0,0,0,.7);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;overflow-x:hidden;}
-body{
-  font-family:'Tajawal','Amiri',system-ui,sans-serif;
-  background:var(--bg);color:var(--text);
-  transition:background .3s,color .3s;line-height:1.7;font-size:15px;
-}
+body{font-family:'Tajawal','Amiri',system-ui,sans-serif;background:var(--bg);color:var(--text);transition:background .3s,color .3s;line-height:1.7;font-size:15px;}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;font-size:inherit;}
 input,select,textarea{font-family:inherit;font-size:inherit;}
 ::-webkit-scrollbar{width:9px;height:9px;}
@@ -113,16 +68,9 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 ::-webkit-scrollbar-track{background:transparent;}
 
 .app{display:flex;min-height:100vh;}
-
-/* Sidebar */
 .sidebar{width:268px;background:var(--surface);border-left:1px solid var(--border);padding:18px 14px;display:flex;flex-direction:column;gap:4px;position:fixed;top:0;right:0;bottom:0;z-index:100;transition:transform .3s;overflow-y:auto;}
 .brand{display:flex;align-items:center;gap:12px;padding:10px 12px 20px;border-bottom:1px solid var(--border);margin-bottom:14px;}
-.brand-logo{
-  width:48px;height:48px;border-radius:14px;
-  background:linear-gradient(135deg,#5e7d5e,#7a9a6e);
-  display:grid;place-items:center;color:#fff;font-size:22px;font-weight:900;
-  box-shadow:0 4px 14px rgba(94,125,94,.35);font-family:'Amiri',serif;
-}
+.brand-logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#5e7d5e,#7a9a6e);display:grid;place-items:center;color:#fff;font-size:22px;font-weight:900;box-shadow:0 4px 14px rgba(94,125,94,.35);font-family:'Amiri',serif;}
 .brand h1{font-size:15px;font-weight:900;line-height:1.3;}
 .brand p{font-size:11px;color:var(--text-muted);margin-top:2px;}
 .nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:11px;color:var(--text-muted);font-size:14px;font-weight:500;transition:all .15s;cursor:pointer;position:relative;}
@@ -142,12 +90,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .icon-btn:hover{background:var(--surface-2);transform:translateY(-1px);}
 .menu-toggle{display:none;}
 
-/* الساعة الحية */
-.clock-widget{
-  background:var(--surface);border:1.5px solid var(--primary);
-  border-radius:14px;padding:8px 16px;display:flex;align-items:center;gap:12px;
-  box-shadow:0 3px 12px rgba(94,125,94,.12);
-}
+.clock-widget{background:var(--surface);border:1.5px solid var(--primary);border-radius:14px;padding:8px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 3px 12px rgba(94,125,94,.12);}
 .clock-widget .clock-label{font-size:10.5px;color:var(--text-muted);font-weight:800;letter-spacing:.5px;}
 .clock-widget .clock-time{font-size:20px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--primary-dark);letter-spacing:1px;line-height:1.1;}
 .clock-widget .live-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);animation:pulse 2s infinite;}
@@ -157,23 +100,12 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .card-title{font-size:15px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
 .card-title .sub{font-size:12px;color:var(--text-muted);font-weight:400;}
 
-/* Hero — تدرج زيتي هادئ */
-.hero{
-  background:linear-gradient(135deg,#5e7d5e 0%,#7a9a6e 100%);
-  color:#fff;border-radius:22px;padding:26px 30px;margin-bottom:20px;
-  position:relative;overflow:hidden;
-  box-shadow:0 10px 32px rgba(94,125,94,.25);
-}
+.hero{background:linear-gradient(135deg,#5e7d5e 0%,#7a9a6e 100%);color:#fff;border-radius:22px;padding:26px 30px;margin-bottom:20px;position:relative;overflow:hidden;box-shadow:0 10px 32px rgba(94,125,94,.25);}
 .hero::after,.hero::before{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.1);}
 .hero::after{width:260px;height:260px;top:-120px;left:-70px;}
 .hero::before{width:200px;height:200px;bottom:-110px;right:-60px;}
 .hero-inner{position:relative;z-index:2;}
-.inspiration{
-  font-family:'Amiri',serif;font-size:19px;font-weight:700;opacity:.95;
-  margin-bottom:14px;padding:10px 18px;background:rgba(255,255,255,.14);
-  border-right:3px solid rgba(255,255,255,.65);border-radius:10px;
-  backdrop-filter:blur(8px);line-height:1.5;
-}
+.inspiration{font-family:'Amiri',serif;font-size:19px;font-weight:700;opacity:.95;margin-bottom:14px;padding:10px 18px;background:rgba(255,255,255,.14);border-right:3px solid rgba(255,255,255,.65);border-radius:10px;backdrop-filter:blur(8px);line-height:1.5;}
 .hero-label{font-size:13px;opacity:.9;margin-bottom:6px;font-weight:700;display:flex;align-items:center;gap:8px;}
 .hero-subject{font-size:28px;font-weight:900;margin-bottom:4px;}
 .hero-time{font-size:15px;opacity:.95;margin-bottom:14px;font-variant-numeric:tabular-nums;font-weight:600;}
@@ -181,16 +113,9 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .hero-task .label{font-size:12px;opacity:.85;margin-bottom:4px;font-weight:700;}
 .hero-task .value{font-size:15px;font-weight:500;}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
-
-/* Hero - الراحة */
 .hero.rest{background:linear-gradient(135deg,#6e8563,#8aa07d);}
 .hero.friday-rest{background:linear-gradient(135deg,#7a9a6e,#9cb287);}
-
-.hero-countdown{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px;
-  font-size:12.5px;font-weight:800;margin-bottom:12px;backdrop-filter:blur(8px);
-}
+.hero-countdown{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px;font-size:12.5px;font-weight:800;margin-bottom:12px;backdrop-filter:blur(8px);}
 .hero-countdown .num{font-variant-numeric:tabular-nums;font-size:14px;}
 
 .btn{padding:11px 22px;border-radius:12px;font-size:14px;font-weight:800;transition:all .15s;display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;}
@@ -206,7 +131,6 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .btn-outline{background:var(--surface);border-color:var(--border);color:var(--text);}
 .btn-outline:hover{background:var(--surface-2);}
 .btn-sm{padding:7px 14px;font-size:12.5px;border-radius:10px;}
-.btn-lg{padding:14px 30px;font-size:15.5px;border-radius:14px;}
 
 .grid{display:grid;gap:16px;}
 .grid-2{grid-template-columns:repeat(2,1fr);}
@@ -247,12 +171,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .priority-m{color:var(--warning-text);font-weight:800;}
 .priority-l{color:var(--text-muted);font-weight:800;}
 
-.task-inspiration{
-  font-family:'Amiri',serif;font-size:13px;font-weight:700;
-  color:var(--primary-dark);margin-bottom:8px;padding:6px 12px;
-  background:var(--primary-soft);border-right:3px solid var(--primary);
-  border-radius:8px;line-height:1.5;
-}
+.task-inspiration{font-family:'Amiri',serif;font-size:13px;font-weight:700;color:var(--primary-dark);margin-bottom:8px;padding:6px 12px;background:var(--primary-soft);border-right:3px solid var(--primary);border-radius:8px;line-height:1.5;}
 .task-inspiration.friday{background:var(--friday-soft);border-right-color:var(--friday);}
 
 .subtasks{display:flex;flex-direction:column;gap:6px;margin-top:10px;padding-right:10px;border-right:2px solid var(--border);}
@@ -331,6 +250,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .cal-day.has-tasks::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--primary);}
 .cal-day.today.has-tasks::after{background:#fff;}
 .cal-day.friday.has-tasks::after{background:var(--primary-dark);}
+.cal-day.makeup-day{background:var(--warning-soft);border:1.5px solid var(--warning);}
 
 .modal-overlay{position:fixed;inset:0;background:rgba(40,45,35,.5);backdrop-filter:blur(6px);z-index:200;display:none;align-items:center;justify-content:center;padding:16px;}
 .modal-overlay.open{display:flex;animation:fade .2s;}
@@ -409,7 +329,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
     <div class="nav-section">الرئيسية</div>
     <div class="nav-item active" data-page="dashboard"><span class="icon">🏠</span> الرئيسية</div>
     <div class="nav-item" data-page="tasks"><span class="icon">✅</span> مهامي <span class="badge-mini" id="navTasksBadge" style="display:none">0</span></div>
-    <div class="nav-item" data-page="missed"><span class="icon">⚠️</span> فاتت <span class="badge-mini" id="navMissedBadge" style="display:none">0</span></div>
+    <div class="nav-item" data-page="missed"><span class="icon">⚠️</span> فاتت (تحتاج قضاء) <span class="badge-mini" id="navMissedBadge" style="display:none">0</span></div>
     <div class="nav-item" data-page="schedule"><span class="icon">📅</span> الجدول الأسبوعي</div>
     <div class="nav-item" data-page="calendar"><span class="icon">📆</span> التقويم</div>
     <div class="nav-section">التعلم</div>
@@ -444,6 +364,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
       </div>
     </div>
 
+    <!-- Dashboard -->
     <section class="page active" id="page-dashboard">
       <div class="hero" id="hero"></div>
       <div class="day-progress-bar">
@@ -470,9 +391,9 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
           <div class="stat-label" id="totalAll">من أصل 0</div>
         </div>
         <div class="card">
-          <div class="stat-label">فائتة (تحتاج قضاء)</div>
+          <div class="stat-label">تحتاج قضاء</div>
           <div class="stat-value" style="color:var(--warning-text)" id="missedCount">0</div>
-          <div class="stat-label">انتهى وقتها دون إنجاز</div>
+          <div class="stat-label">مهام انتهى وقتها</div>
         </div>
       </div>
 
@@ -489,7 +410,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
             <div id="nextTasksBox"></div>
           </div>
           <div class="card" style="margin-bottom:16px;">
-            <div class="card-title">⚠️ فاتت (تحتاج قضاء)</div>
+            <div class="card-title">⚠️ تحتاج قضاء</div>
             <div class="task-list" id="missedTasksBox"></div>
           </div>
           <div class="card">
@@ -500,6 +421,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
       </div>
     </section>
 
+    <!-- Tasks -->
     <section class="page" id="page-tasks">
       <div class="card" style="margin-bottom:16px;">
         <div class="card-title">✅ مهامي اليوم <span class="sub" id="tasksTodayLabel"></span></div>
@@ -513,24 +435,32 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
             <option value="pending">مجدولة</option>
             <option value="current">الآن</option>
             <option value="completed">مكتملة</option>
-            <option value="missed">فاتت</option>
+            <option value="completed_late">مكتملة متأخرة</option>
+            <option value="needs_makeup">تحتاج قضاء</option>
+            <option value="makeup_scheduled">مجدولة للتعويض</option>
           </select>
         </div>
         <div class="task-list" id="allTasks"></div>
       </div>
     </section>
 
+    <!-- Missed / Makeup -->
     <section class="page" id="page-missed">
-      <div class="card">
-        <div class="card-title">⚠️ مهام فاتت <span class="sub">انتهى وقتها ولم تُنجز — يمكنك قضاؤها لاحقًا</span></div>
+      <div class="card friday-card" style="margin-bottom:16px;">
+        <div class="card-title">
+          ⚠️ مهام تحتاج قضاء
+          <span class="friday-badge">🟢 يوم التعويض: الجمعة</span>
+        </div>
         <div id="missedPageContent"></div>
       </div>
     </section>
 
+    <!-- Schedule -->
     <section class="page" id="page-schedule">
       <div id="scheduleContent"></div>
     </section>
 
+    <!-- Calendar -->
     <section class="page" id="page-calendar">
       <div class="card" style="margin-bottom:16px;">
         <div class="card-title">
@@ -543,6 +473,11 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
         </div>
         <div class="calendar-grid" id="calHeads"></div>
         <div class="calendar-grid" id="calDays" style="margin-top:6px;"></div>
+        <div style="margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--text-muted);">
+          <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:var(--primary);"></span> اليوم</div>
+          <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:var(--friday-soft);border:1.5px solid var(--friday-border);"></span> الجمعة (يوم التعويض)</div>
+          <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:var(--warning-soft);border:1.5px solid var(--warning);"></span> يوم به تعويضات</div>
+        </div>
       </div>
       <div class="card">
         <div class="card-title" id="calSelectedLabel">📌 اختر يومًا لعرض مهامه</div>
@@ -550,19 +485,24 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
       </div>
     </section>
 
+    <!-- Books -->
     <section class="page" id="page-books">
       <div class="card"><div class="card-title">📖 مكتبتي</div><div id="booksContent"></div></div>
     </section>
+    <!-- Notes -->
     <section class="page" id="page-notes">
       <div class="card"><div class="card-title">📝 ملاحظاتي</div><div id="notesContent"></div></div>
     </section>
+    <!-- Mistakes -->
     <section class="page" id="page-mistakes">
       <div class="card"><div class="card-title">❌ أخطائي</div><div id="mistakesContent"></div></div>
     </section>
+    <!-- Cards -->
     <section class="page" id="page-cards">
       <div class="card" style="margin-bottom:16px;"><div class="card-title">⚛️ بطاقات الفيزياء</div><div class="grid grid-3" id="physicsCards"></div></div>
       <div class="card"><div class="card-title">🌍 بطاقات علوم الأرض</div><div class="grid grid-3" id="earthCards"></div></div>
     </section>
+    <!-- Progress -->
     <section class="page" id="page-progress">
       <div class="grid grid-2" style="margin-bottom:16px;">
         <div class="card"><div class="card-title">📊 آخر 7 أيام</div><div class="week-bars" id="weekBars"></div></div>
@@ -570,6 +510,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
       </div>
       <div class="card"><div class="card-title">📜 سجل الإنجاز</div><div id="achievementLog"></div></div>
     </section>
+    <!-- Settings -->
     <section class="page" id="page-settings">
       <div class="grid grid-2">
         <div class="card">
@@ -593,9 +534,10 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 <script>
 /* ==========================================================
    نظام دراسة المهندسة سلمى
-   - الوقت الحقيقي هو الأساس
-   - لا يوجد Timer
-   - لا نقل تلقائي للجمعة — فقط المهام التي تنتهي تصبح "فاتت"
+   - الوقت الحقيقي هو الأساس (بدون Timer)
+   - الحالات: pending | current | completed | completed_late
+             | needs_makeup | makeup_scheduled
+   - لا تكرار للتعويض — المكتملة لا تُلمس
    ========================================================== */
 
 const SUBJECTS = {
@@ -616,10 +558,13 @@ const INSPIRATIONS = {
   routine: ['🌙 استعدي لنوم هادئ','النوم الكافي = تركيز أعلى غدًا','ارتحي، غدًا يوم جديد','نم مبكرًا واستيقظي بنشاط'],
   break:   ['☕ خذي نفسًا عميقًا','الراحة جزء من الدراسة','استرخي قليلًا ثم عودي','استمتعي بوقتك بلا ذنب'],
   prayer:  ['🕌 الصلاة راحة القلب','حان وقت الصلاة','توضئي وصلّي بخشوع','الصلاة نور يومك'],
+  makeup:  ['🟢 يوم التعويض — خطوة بخطوة','اقضي على ما تراكم بهدوء','لا تجعلي التأخير يثقل عليك','كل مهمة تنجزيها تخفف عنك'],
   default: ['🌿 توكل على الله وابدئي','ركّزي الآن، أنتِ قادرة','خطوة بخطوة','أحسني كما تعوّدتِ']
 };
 function getInspiration(task){
   if(!task) return INSPIRATIONS.default[0];
+  if(task.makeupDate && task.makeupDate === todayStr() && task.originalDate !== todayStr())
+    return INSPIRATIONS.makeup[0];
   const list = INSPIRATIONS[task.type] || INSPIRATIONS.default;
   return list[(task.id||'x').charCodeAt(0) % list.length];
 }
@@ -634,9 +579,9 @@ let state = {
   calMonth: new Date().getMonth(),
   calYear: new Date().getFullYear(),
   selectedCalDate: null,
-  lastTick: null,
+  lastSyncKey: null, // آخر دقيقة تم فيها المزامنة
 };
-const STORAGE_KEY = 'salma_schedule_v4';
+const STORAGE_KEY = 'salma_schedule_v5';
 
 /* ============ Utilities ============ */
 const $ = (s,p=document)=>p.querySelector(s);
@@ -647,7 +592,6 @@ const dateStr = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate(
 const timeToMin = t => { const [h,m]=t.split(':').map(Number); return h*60+m; };
 const minToTime = m => { m=((m%1440)+1440)%1440; return `${pad(Math.floor(m/60))}:${pad(m%60)}`; };
 const nowMin = () => { const d=new Date(); return d.getHours()*60+d.getMinutes(); };
-const nowSec = () => { const d=new Date(); return d.getHours()*3600+d.getMinutes()*60+d.getSeconds(); };
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
 const escapeHtml = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -659,6 +603,17 @@ function formatDateAr(ds){
 function dayOfWeek(ds){
   const [y,m,d] = ds.split('-').map(Number);
   return new Date(y,m-1,d).getDay();
+}
+function isSameDay(a, b){ return a === b; }
+
+/* إيجاد أقرب جمعة قادمة (تشمل اليوم إذا كان جمعة) */
+function getNextFriday(fromDate=new Date()){
+  const d = new Date(fromDate);
+  const day = d.getDay();
+  if(day === 5) return dateStr(d);
+  const diff = (5 - day + 7) % 7;
+  d.setDate(d.getDate() + diff);
+  return dateStr(d);
 }
 
 /* ============ Save/Load ============ */
@@ -697,7 +652,13 @@ function buildInitialData(){
     type: opts.type||'study', priority: opts.priority||'medium',
     status:'pending', subtasks: opts.subtasks||[],
     completedAt:null, completedDate:null,
-    wasMissed:false, // هل فاتت؟
+    // حقول التعويض:
+    originalDate: date,
+    originalStart: start,
+    originalEnd: end,
+    needsMakeup: false,
+    makeupDate: null,
+    makeupScheduledAt: null,
   });
   const sub = labels => labels.map(l => ({ id:uid(), text:l, done:false }));
 
@@ -797,45 +758,57 @@ function buildInitialData(){
 }
 
 /* ==========================================================
-   ★★★ محرك الوقت الحقيقي ★★★
-   - يقرأ الوقت الفعلي
-   - يحدد: pending / current / completed / missed
-   - لا نقل تلقائي للجمعة
+   ★★★ محرك المزامنة ★★★
+   - يقرأ الوقت الحقيقي
+   - يحدد: pending | current | completed | completed_late
+           | needs_makeup | makeup_scheduled
+   - لا يلمس completed / completed_late
+   - لا يكرر التعويضات
    ========================================================== */
 function syncTaskStatuses(){
   const t = todayStr();
   const n = nowMin();
   let changed = false;
+  let newMissed = 0;
 
   state.tasks.forEach(task => {
-    // المكتملة لا تُلمس
-    if(task.status === 'completed') return;
+    // 1) المكتملة لا تُلمس إطلاقًا (حماية من تكرار التعويض)
+    if(task.status === 'completed' || task.status === 'completed_late') return;
 
-    // مهمة في المستقبل
+    // 2) التعويضات المجدولة لا تُلمس
+    if(task.status === 'makeup_scheduled') return;
+
+    // 3) مهمة في المستقبل
     if(task.date > t){
       if(task.status !== 'pending'){ task.status = 'pending'; changed = true; }
       return;
     }
-    // مهمة في يوم سابق
+
+    // 4) مهمة في يوم سابق (فات موعدها)
     if(task.date < t){
-      if(task.status !== 'missed'){
-        task.status = 'missed'; task.wasMissed = true; changed = true;
+      if(task.status !== 'needs_makeup'){
+        task.status = 'needs_makeup';
+        task.needsMakeup = true;
+        changed = true; newMissed++;
       }
       return;
     }
 
-    // مهمة اليوم
+    // 5) مهمة اليوم
     const startMin = timeToMin(task.startTime);
     const endMin = timeToMin(task.endTime);
     const isRoutine = ['prayer','sleep','break','school','routine'].includes(task.type);
 
     if(n < startMin){
+      // لم يبدأ وقتها
       if(task.status !== 'pending'){ task.status = 'pending'; changed = true; }
     } else if(n >= startMin && n < endMin){
+      // الوقت الآن — المهمة الحالية
       if(task.status !== 'current'){ task.status = 'current'; changed = true; }
-    } else if(n >= endMin){
+    } else {
+      // انتهى وقتها
       if(isRoutine){
-        // الروتينية تُعلَّم مكتملة تلقائيًا
+        // روتينية → مكتملة تلقائيًا
         if(task.status !== 'completed'){
           task.status = 'completed';
           task.completedAt = new Date().toISOString();
@@ -843,18 +816,45 @@ function syncTaskStatuses(){
           changed = true;
         }
       } else {
-        // المهمة الدراسية انتهى وقتها → فاتت (بدون نقل)
-        if(task.status !== 'missed'){
-          task.status = 'missed';
-          task.wasMissed = true;
-          changed = true;
+        // دراسية → تحتاج قضاء
+        if(task.status !== 'needs_makeup'){
+          task.status = 'needs_makeup';
+          task.needsMakeup = true;
+          changed = true; newMissed++;
         }
       }
     }
   });
 
-  if(changed) save();
+  if(changed){ save(); }
+  if(newMissed){
+    // إعادة توزيع المهام الفائتة على الجمعة القادمة (مرة واحدة فقط)
+    scheduleMakeupForNewMissed();
+  }
   return changed;
+}
+
+/* جدولة التعويض — فقط للمهام needs_makeup التي لا تحتوي على makeupDate */
+function scheduleMakeupForNewMissed(){
+  const fridayStr = getNextFriday();
+  let scheduled = 0;
+  state.tasks.forEach(task => {
+    if(task.status === 'needs_makeup' && !task.makeupDate){
+      // إذا كانت المهمة نفسها يوم جمعة، اجعلها في نفس اليوم
+      if(dayOfWeek(task.date) === 5){
+        task.makeupDate = task.date;
+      } else {
+        task.makeupDate = fridayStr;
+      }
+      task.makeupScheduledAt = new Date().toISOString();
+      task.status = 'makeup_scheduled';
+      scheduled++;
+    }
+  });
+  if(scheduled){
+    save();
+    toast('🔄 تم جدولة التعويض', `${scheduled} مهمة أُضيفت ليوم الجمعة`, 'warning');
+  }
 }
 
 /* ============ استعلامات الوقت ============ */
@@ -864,14 +864,19 @@ function getCurrentTask(){
 function getNextTask(){
   const n = nowMin();
   return state.tasks
-    .filter(x => x.date === todayStr() && x.status === 'pending' && timeToMin(x.startTime) > n)
+    .filter(x => x.date === todayStr() && (x.status === 'pending' || x.status === 'current') && timeToMin(x.startTime) > n)
     .sort((a,b)=>timeToMin(a.startTime)-timeToMin(b.startTime))[0] || null;
 }
-function getMissedTasks(){
-  return state.tasks.filter(x => x.status === 'missed');
+function getMakeupTasks(){
+  return state.tasks.filter(x => x.status === 'needs_makeup' || x.status === 'makeup_scheduled');
 }
-
-// الوقت المتبقي حتى نهاية المهمة الحالية
+function getMakeupForFriday(fridayStr){
+  return state.tasks.filter(x =>
+    x.status === 'makeup_scheduled' &&
+    x.makeupDate === fridayStr &&
+    x.originalDate !== fridayStr
+  );
+}
 function getRemainingMinutes(task){
   if(!task) return 0;
   return Math.max(0, timeToMin(task.endTime) - nowMin());
@@ -900,7 +905,7 @@ function navigate(page){
     $('#sidebarOverlay').classList.remove('open');
   }
   const titles = {
-    dashboard:'صباح الخير يا سلمى 🌿', tasks:'مهامي اليوم ✅', missed:'مهام فاتت ⚠️',
+    dashboard:'صباح الخير يا سلمى 🌿', tasks:'مهامي اليوم ✅', missed:'مهام تحتاج قضاء ⚠️',
     schedule:'الجدول الأسبوعي 📅', calendar:'التقويم 🗓️',
     books:'مكتبتي 📖', notes:'ملاحظاتي 📝', mistakes:'أخطائي ❌',
     cards:'البطاقات 🎴', progress:'تقدمي 📊', settings:'الإعدادات ⚙️',
@@ -954,7 +959,7 @@ function renderHero(){
         <div class="inspiration">${escapeHtml(insp)}</div>
         <div class="hero-label">⏰ المهمة الحالية الآن</div>
         <div class="hero-subject">${s.icon||''} ${escapeHtml(s.name)}</div>
-        <div class="hero-time">${cur.startTime} → ${cur.endTime}${subtasksTotal?` — ${subtasksDone}/${subtasksTotal} مهام فرعية`:''}</div>
+        <div class="hero-time">${cur.startTime} → ${cur.endTime}${subtasksTotal?` — ${subtasksDone}/${subtasksTotal}`:''}</div>
         <div class="hero-countdown">⏳ يتبقى <span class="num">${remaining}</span> دقيقة</div>
         <div class="hero-task">
           <div class="label">المطلوب الآن</div>
@@ -988,26 +993,26 @@ function renderHero(){
         </div>
       </div>`;
   } else {
-    const missed = getMissedTasks().length;
+    const missed = getMakeupTasks().length;
     hero.className = 'hero rest' + (isFriday?' friday-rest':'');
     hero.innerHTML = `
       <div class="hero-inner">
         <div class="inspiration">🌿 ${isFriday?'الجمعة يوم راحة':'لا توجد مهمة حالية الآن'}</div>
         <div class="hero-time" style="margin-bottom:0;">
-          ${missed?`لديك ${missed} مهمة فاتت — يمكنك قضاؤها لاحقًا`:'استمتعي بوقتك، أنتِ في راحة'}
+          ${missed?`لديك ${missed} مهمة تحتاج قضاء — يمكنك إنجازها لاحقًا`:'استمتعي بوقتك، أنتِ في راحة'}
         </div>
         ${missed?`<div class="hero-actions" style="margin-top:16px;">
-          <button class="btn btn-white" onclick="navigate('missed')">عرض المهام الفائتة</button>
+          <button class="btn btn-white" onclick="navigate('missed')">عرض المهام</button>
         </div>`:''}
       </div>`;
   }
 }
 
-/* ============ شريط التقدم اليومي ============ */
+/* ============ شريط تقدم اليوم ============ */
 function renderDayProgress(){
   const t = todayStr();
   const dayTasks = state.tasks.filter(x => x.date === t && !['prayer','sleep','break','school','routine'].includes(x.type));
-  const done = dayTasks.filter(x => x.status === 'completed').length;
+  const done = dayTasks.filter(x => x.status === 'completed' || x.status === 'completed_late').length;
   const total = dayTasks.length;
   const pct = total ? Math.round((done/total)*100) : 0;
   const fill = $('#dayFill'); if(fill) fill.style.width = `${pct}%`;
@@ -1020,19 +1025,19 @@ function calcStats(){
   const t = todayStr();
   const excl = ['prayer','sleep','break','school','routine'];
   const todayTasks = state.tasks.filter(x => x.date === t && !excl.includes(x.type));
-  const todayDone = todayTasks.filter(x => x.status === 'completed').length;
+  const todayDone = todayTasks.filter(x => x.status === 'completed' || x.status === 'completed_late').length;
   const todayPct = todayTasks.length ? Math.round((todayDone/todayTasks.length)*100) : 0;
 
   const now = new Date();
   const sunday = new Date(now); sunday.setDate(now.getDate() - now.getDay());
   const weekStart = dateStr(sunday);
   const weekTasks = state.tasks.filter(x => x.date >= weekStart && !excl.includes(x.type));
-  const weekDone = weekTasks.filter(x => x.status === 'completed').length;
+  const weekDone = weekTasks.filter(x => x.status === 'completed' || x.status === 'completed_late').length;
   const weekPct = weekTasks.length ? Math.round((weekDone/weekTasks.length)*100) : 0;
 
   const allStudy = state.tasks.filter(x => !excl.includes(x.type));
-  const allDone = allStudy.filter(x => x.status === 'completed').length;
-  const missed = getMissedTasks().length;
+  const allDone = allStudy.filter(x => x.status === 'completed' || x.status === 'completed_late').length;
+  const missed = getMakeupTasks().length;
 
   return { todayPct, weekPct, todayDone, todayTotal: todayTasks.length, weekDone, weekTotal: weekTasks.length, allDone, allTotal: allStudy.length, missed };
 }
@@ -1063,11 +1068,13 @@ function taskItemHTML(t, opts={}){
                    t.subject === 'physics' ? 'tag-physics' :
                    t.subject === 'earth' ? 'tag-earth' : '';
   const isCompleted = t.status === 'completed';
+  const isCompletedLate = t.status === 'completed_late';
   const isCurrent = t.status === 'current';
-  const isMissed = t.status === 'missed';
+  const needsMakeup = t.status === 'needs_makeup' || t.status === 'makeup_scheduled';
+  const isMakeup = t.makeupDate && t.makeupDate === todayStr() && t.originalDate !== todayStr();
 
-  const stIcon = isCompleted ? '✓' : isCurrent ? '●' : isMissed ? '!' : '';
-  const checkClass = isCompleted ? 'done' : isCurrent ? 'prog' : '';
+  const stIcon = (isCompleted || isCompletedLate) ? '✓' : isCurrent ? '●' : needsMakeup ? '!' : '';
+  const checkClass = (isCompleted || isCompletedLate) ? 'done' : isCurrent ? 'prog' : '';
   const prioClass = t.priority === 'high' ? 'priority-h' :
                     t.priority === 'medium' ? 'priority-m' : 'priority-l';
   const prioLabel = t.priority === 'high' ? 'عالية' :
@@ -1082,17 +1089,22 @@ function taskItemHTML(t, opts={}){
     <div class="subtasks">
       ${t.subtasks.map((st,i)=>`
         <label class="subtask">
-          <input type="checkbox" ${st.done?'checked':''} ${isCompleted?'disabled':''} onchange="toggleSubtask('${t.id}',${i})">
+          <input type="checkbox" ${st.done?'checked':''} ${(isCompleted||isCompletedLate)?'disabled':''} onchange="toggleSubtask('${t.id}',${i})">
           <span>${escapeHtml(st.text)}</span>
         </label>
       `).join('')}
     </div>` : '';
 
-  const missedInfo = isMissed && opts.showMissedInfo ? `<div class="missed-info">⚠️ فات وقت هذه المهمة — يمكنك إنجازها الآن وسيُسجَّل متأخرًا</div>` : '';
+  const missedInfo = needsMakeup
+    ? `<div class="missed-info">⚠️ تحتاج قضاء — ${t.makeupDate?`مجدولة ليوم ${formatDateAr(t.makeupDate)}`:'لم تُجدول بعد'} — الأصل: ${formatDateAr(t.originalDate)} ${t.originalStart} → ${t.originalEnd}</div>`
+    : '';
+  const lateInfo = isCompletedLate
+    ? `<div class="missed-info" style="background:var(--success-soft);color:var(--success-text);">✓ أُنجزت متأخرة — الأصل: ${formatDateAr(t.originalDate)} ${t.originalStart} → ${t.originalEnd}</div>`
+    : '';
 
   return `
-    <div class="task-item ${isCompleted?'completed':''} ${isMissed?'missed':''} ${isCurrent?'current':''}">
-      <div class="task-check ${checkClass}" onclick="toggleTaskComplete('${t.id}')" title="${isCompleted?'تراجع':'إنجاز'}">${stIcon}</div>
+    <div class="task-item ${(isCompleted||isCompletedLate)?'completed':''} ${needsMakeup?'missed':''} ${isCurrent?'current':''}">
+      <div class="task-check ${checkClass}" onclick="toggleTaskComplete('${t.id}')" title="${(isCompleted||isCompletedLate)?'تراجع':'إنجاز'}">${stIcon}</div>
       <div class="task-body">
         <div class="task-inspiration ${isFridayTask?'friday':''}">${escapeHtml(insp)}</div>
         <div class="task-name">${escapeHtml(t.title)}</div>
@@ -1104,24 +1116,25 @@ function taskItemHTML(t, opts={}){
           ${completedAt}
         </div>
         ${missedInfo}
+        ${lateInfo}
         ${subtasksHTML}
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        ${!isCompleted ? `<button class="btn btn-success btn-sm" onclick="completeTask('${t.id}')" title="إنجاز">✓</button>` : `<button class="btn btn-outline btn-sm" onclick="undoComplete('${t.id}')" title="تراجع">↺</button>`}
+        ${!(isCompleted||isCompletedLate) ? `<button class="btn btn-success btn-sm" onclick="completeTask('${t.id}')" title="إنجاز">✓</button>` : `<button class="btn btn-outline btn-sm" onclick="undoComplete('${t.id}')" title="تراجع">↺</button>`}
         <button class="btn btn-outline btn-sm" onclick="openTaskModal('${t.id}')" title="تعديل">✏️</button>
       </div>
     </div>`;
 }
 
-/* ============ Timeline HTML ============ */
 function timelineItemHTML(t){
   const s = SUBJECTS[t.subject] || {name:t.subject, icon:''};
-  const cls = t.status === 'completed' ? 'completed' :
+  const cls = (t.status === 'completed' || t.status === 'completed_late') ? 'completed' :
               t.status === 'current' ? 'current' :
-              t.status === 'missed' ? 'missed' : '';
-  const stIcon = t.status === 'completed' ? '✓ مكتملة' :
+              (t.status === 'needs_makeup' || t.status === 'makeup_scheduled') ? 'missed' : '';
+  const stIcon = (t.status === 'completed') ? '✓ مكتملة' :
+                 (t.status === 'completed_late') ? '✓ متأخرة' :
                  t.status === 'current' ? '● الآن' :
-                 t.status === 'missed' ? '⚠️ فاتت' : '□ مجدولة';
+                 (t.status === 'needs_makeup' || t.status === 'makeup_scheduled') ? '⚠️ تحتاج قضاء' : '□ مجدولة';
   return `<div class="timeline-item ${cls}">
     <div class="t-time">${t.startTime} → ${t.endTime}</div>
     <div class="t-line"></div>
@@ -1129,7 +1142,7 @@ function timelineItemHTML(t){
       <div style="font-size:13.5px;font-weight:700;margin-bottom:3px;">${s.icon} ${escapeHtml(t.title)}</div>
       <div style="font-size:11.5px;color:var(--text-muted);">${stIcon} — ${escapeHtml(s.name)}</div>
     </div>
-    ${t.status !== 'completed' ? `<button class="btn btn-success btn-sm" onclick="completeTask('${t.id}')">✓</button>` : ''}
+    ${!(t.status === 'completed' || t.status === 'completed_late') ? `<button class="btn btn-success btn-sm" onclick="completeTask('${t.id}')">✓</button>` : ''}
   </div>`;
 }
 
@@ -1169,10 +1182,10 @@ function renderDashboard(){
     $('#nextTasksBox').innerHTML = '<div class="empty-state">لا توجد مهام قادمة اليوم.</div>';
   }
 
-  // الفائتة
-  const missed = getMissedTasks();
+  // تحتاج قضاء
+  const missed = getMakeupTasks();
   $('#missedTasksBox').innerHTML = missed.length
-    ? missed.slice(0,4).map(x=>taskItemHTML(x,{showDate:true, showMissedInfo:true})).join('')
+    ? missed.slice(0,4).map(x=>taskItemHTML(x,{showDate:true})).join('')
     : '<div class="empty-state">🎉 لا توجد مهام فائتة.</div>';
 
   // تقدم المواد
@@ -1181,7 +1194,7 @@ function renderDashboard(){
   state.tasks.forEach(x => {
     if(SUBJECTS[x.subject] && !['prayer','sleep','break','school','routine'].includes(x.type)){
       sp[x.subject].total++;
-      if(x.status === 'completed') sp[x.subject].done++;
+      if(x.status === 'completed' || x.status === 'completed_late') sp[x.subject].done++;
     }
   });
   $('#subjectProgress').innerHTML = Object.entries(SUBJECTS)
@@ -1211,37 +1224,58 @@ function renderMyTasks(){
     : '<div class="empty-state"><div class="big">🌿</div>لا توجد مهام لهذا اليوم.</div>';
   $('#tasksTodayLabel').textContent = formatDateAr(t);
 
-  // كل المهام
   const filter = $('#taskFilter').value;
   let tasks = [...state.tasks].sort((a,b)=> a.date === b.date ? timeToMin(a.startTime)-timeToMin(b.startTime) : b.date.localeCompare(a.date));
   if(filter !== 'all') tasks = tasks.filter(t => t.status === filter);
   $('#allTasks').innerHTML = tasks.length
-    ? tasks.map(x=>taskItemHTML(x,{showDate:true, showMissedInfo:true})).join('')
+    ? tasks.map(x=>taskItemHTML(x,{showDate:true})).join('')
     : '<div class="empty-state">لا توجد مهام مطابقة.</div>';
 }
 
-/* ============ Missed ============ */
+/* ============ Missed / Makeup Page ============ */
 function renderMissedPage(){
   syncTaskStatuses();
-  const missed = getMissedTasks();
+  const missed = getMakeupTasks();
+  const fridayStr = getNextFriday();
+  const fridayTasks = getMakeupForFriday(fridayStr);
+  const todayF = todayStr() === fridayStr;
+
   if(!missed.length){
-    $('#missedPageContent').innerHTML = '<div class="empty-state"><div class="big">🎉</div>ممتاز! لا توجد مهام فائتة.</div>';
+    $('#missedPageContent').innerHTML = `
+      <div class="empty-state" style="padding:30px 18px;">
+        <div class="big">🟢</div>
+        <div style="font-size:16px;font-weight:900;margin-bottom:6px;">لا توجد مهام تحتاج قضاء</div>
+        <div style="font-size:13px;">الجمعة القادمة (${formatDateAr(fridayStr)}) يوم راحة كاملة 🌿</div>
+      </div>`;
     return;
   }
+
+  let html = `<div style="margin-bottom:14px;padding:14px 18px;background:var(--friday-soft);border-radius:12px;border:1px dashed var(--friday-border);">
+    <div style="font-weight:900;color:var(--primary-dark);margin-bottom:4px;">
+      ${todayF?'🟢 اليوم يوم التعويض':'🟢 يوم التعويض المجدول: '+formatDateAr(fridayStr)}
+    </div>
+    <div style="font-size:13px;color:var(--text-muted);">لديك ${missed.length} مهمة تحتاج قضاء. أنجزيها بهدوء.</div>
+  </div>`;
+
+  // تجميع حسب تاريخ التعويض
   const byDate = {};
   missed.forEach(x => {
-    if(!byDate[x.date]) byDate[x.date] = [];
-    byDate[x.date].push(x);
+    const d = x.makeupDate || fridayStr;
+    if(!byDate[d]) byDate[d] = [];
+    byDate[d].push(x);
   });
-  let html = `<div style="margin-bottom:14px;padding:14px 18px;background:var(--warning-soft);border-radius:12px;border:1px dashed var(--warning);font-size:13px;color:var(--warning-text);font-weight:700;">
-    ⚠️ هذه المهام انتهى وقتها دون إنجاز. أنجزيها متى استطعتِ — سيُسجَّل الإنجاز بتاريخ اليوم.
-  </div>`;
-  Object.entries(byDate).sort((a,b)=>b[0].localeCompare(a[0])).forEach(([date, list])=>{
+
+  Object.entries(byDate).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([date, list])=>{
     html += `<div style="margin-bottom:18px;">
-      <div style="font-size:14px;font-weight:900;margin-bottom:10px;color:var(--primary-dark);">📅 ${formatDateAr(date)}</div>
-      <div class="task-list">${list.map(x=>taskItemHTML(x,{showMissedInfo:true})).join('')}</div>
+      <div style="font-size:14px;font-weight:900;margin-bottom:10px;color:var(--primary-dark);">
+        📅 ${formatDateAr(date)} ${date===fridayStr?'🟢 يوم التعويض':''}
+      </div>
+      <div class="task-list">
+        ${list.map(x=>taskItemHTML(x)).join('')}
+      </div>
     </div>`;
   });
+
   $('#missedPageContent').innerHTML = html;
 }
 
@@ -1250,6 +1284,7 @@ function renderSchedule(){
   const now = new Date();
   const sunday = new Date(now); sunday.setDate(now.getDate() - now.getDay());
   const t = todayStr();
+  const fridayStr = getNextFriday();
   let html = '';
   for(let i=0; i<7; i++){
     const d = new Date(sunday); d.setDate(sunday.getDate()+i);
@@ -1258,6 +1293,12 @@ function renderSchedule(){
     const dayTasks = state.tasks
       .filter(x => x.date === ds && !['prayer','sleep','routine'].includes(x.type))
       .sort((a,b)=>timeToMin(a.startTime)-timeToMin(b.startTime));
+
+    const makeupForDay = isFriday
+      ? state.tasks.filter(x => x.status === 'makeup_scheduled' && x.makeupDate === ds && x.originalDate !== ds)
+      : [];
+    const allDay = [...dayTasks, ...makeupForDay];
+
     const cardClass = isFriday ? 'card schedule-day friday-card' : 'card schedule-day';
     html += `<div class="${cardClass}">
       <h3>
@@ -1269,20 +1310,23 @@ function renderSchedule(){
       <table class="schedule-table">
         <thead><tr><th>الوقت</th><th>المادة</th><th>المهمة</th><th>الحالة</th></tr></thead>
         <tbody>
-          ${dayTasks.length ? dayTasks.map(x=>{
+          ${allDay.length ? allDay.map(x=>{
             const s = SUBJECTS[x.subject] || {name:x.subject, icon:''};
-            const st = x.status === 'completed' ? '✓ مكتملة' :
+            const st = (x.status === 'completed') ? '✓ مكتملة' :
+                       (x.status === 'completed_late') ? '✓ متأخرة' :
                        x.status === 'current' ? '● الآن' :
-                       x.status === 'missed' ? '⚠️ فاتت' : '□ مجدولة';
+                       x.status === 'needs_makeup' ? '⚠️ تحتاج قضاء' :
+                       x.status === 'makeup_scheduled' ? '🔄 مجدول للتعويض' : '□ مجدولة';
             const rowClass = (ds === t && x.status === 'current') ? 'current-row' : '';
+            const isMakeupRow = x.makeupDate === ds && x.originalDate !== ds;
             return `<tr class="${rowClass}" onclick="openTaskModal('${x.id}')">
               <td class="time-cell">${x.startTime} → ${x.endTime}</td>
-              <td>${s.icon} ${escapeHtml(s.name)}</td>
+              <td>${s.icon} ${escapeHtml(s.name)}${isMakeupRow?' <span class="task-tag" style="background:var(--warning-soft);color:var(--warning-text);">تعويض</span>':''}</td>
               <td>${escapeHtml(x.title)}</td>
               <td>${st}</td>
             </tr>`;
           }).join('') : `<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:18px;">
-            ${isFriday?'🟢 لا توجد مهام — الجمعة يوم راحة':'لا توجد مهام'}
+            ${isFriday?'🟢 لا توجد مهام تعويض — الجمعة يوم راحة':'لا توجد مهام'}
           </td></tr>`}
         </tbody>
       </table>
@@ -1306,11 +1350,13 @@ function renderCalendar(){
     const dow = new Date(y,m,d).getDay();
     const isFriday = dow === 5;
     const hasTasks = state.tasks.some(x => x.date === ds);
+    const hasMakeup = state.tasks.some(x => x.makeupDate === ds && x.originalDate !== ds && x.status === 'makeup_scheduled');
     const isToday = ds === t;
     const cls = ['cal-day'];
     if(isToday) cls.push('today');
     if(isFriday && !isToday) cls.push('friday');
-    if(hasTasks) cls.push('has-tasks');
+    if(hasTasks || hasMakeup) cls.push('has-tasks');
+    if(hasMakeup && !isFriday) cls.push('makeup-day');
     html += `<div class="${cls.join(' ')}" onclick="selectCalDay('${ds}')"><span>${d}</span></div>`;
   }
   $('#calDays').innerHTML = html;
@@ -1325,23 +1371,44 @@ function renderCalSelected(){
   let title = `📌 مهام ${formatDateAr(ds)}`;
   if(isFriday) title += ' — 🟢 يوم التعويض';
   $('#calSelectedLabel').innerHTML = title;
-  const list = state.tasks
+
+  const regular = state.tasks
     .filter(x => x.date === ds && !['prayer','sleep','routine'].includes(x.type))
     .sort((a,b)=>timeToMin(a.startTime)-timeToMin(b.startTime));
-  if(!list.length){
+
+  const makeup = state.tasks
+    .filter(x => x.makeupDate === ds && x.originalDate !== ds && x.status === 'makeup_scheduled');
+
+  const all = [...regular, ...makeup];
+
+  if(!all.length){
     $('#calSelectedTasks').innerHTML = isFriday
-      ? '<div class="empty-state"><div class="big">🟢</div>الجمعة يوم راحة.</div>'
+      ? '<div class="empty-state"><div class="big">🟢</div>لا توجد مهام — الجمعة يوم راحة.</div>'
       : '<div class="empty-state">لا توجد مهام في هذا اليوم.</div>';
     return;
   }
-  $('#calSelectedTasks').innerHTML = list.map(x=>taskItemHTML(x,{showMissedInfo:true})).join('');
+
+  let html = '';
+  if(makeup.length && isFriday){
+    html += `<div style="margin-bottom:14px;">
+      <div style="font-size:13.5px;font-weight:900;color:var(--primary-dark);margin-bottom:10px;">🔄 مهام التعويض (${makeup.length})</div>
+      <div class="task-list">${makeup.map(x=>taskItemHTML(x)).join('')}</div>
+    </div>`;
+  }
+  if(regular.length){
+    if(makeup.length && isFriday){
+      html += `<div style="font-size:13.5px;font-weight:900;color:var(--primary-dark);margin:14px 0 10px;">📅 مهام اليوم</div>`;
+    }
+    html += `<div class="task-list">${regular.map(x=>taskItemHTML(x)).join('')}</div>`;
+  }
+  $('#calSelectedTasks').innerHTML = html;
 }
 
 /* ============ Task Actions ============ */
 function toggleTaskComplete(id){
   const t = state.tasks.find(x => x.id === id);
   if(!t) return;
-  if(t.status === 'completed') undoComplete(id);
+  if(t.status === 'completed' || t.status === 'completed_late') undoComplete(id);
   else completeTask(id);
 }
 
@@ -1349,18 +1416,48 @@ function completeTask(id){
   const t = state.tasks.find(x => x.id === id);
   if(!t) return;
   const now = new Date();
-  const wasLate = (t.date < todayStr()) || (t.date === todayStr() && nowMin() >= timeToMin(t.endTime));
-  t.status = 'completed';
-  t.completedAt = now.toISOString();
-  t.completedDate = todayStr();
-  t.wasMissed = false;
+  const nowStr = now.toISOString();
+  const todayS = todayStr();
+  const currentMin = nowMin();
+  const endMin = timeToMin(t.endTime);
+
+  // تحديد نوع الإنجاز:
+  // - إذا كانت needs_makeup أو makeup_scheduled → completed_late
+  // - إذا كان تاريخها قبل اليوم → completed_late
+  // - إذا كانت اليوم وانتهى وقتها → completed_late
+  // - وإلا → completed
+  let newStatus = 'completed';
+  if(t.status === 'needs_makeup' || t.status === 'makeup_scheduled'){
+    newStatus = 'completed_late';
+  } else if(t.date < todayS){
+    newStatus = 'completed_late';
+  } else if(t.date === todayS && currentMin >= endMin){
+    newStatus = 'completed_late';
+  }
+
+  t.status = newStatus;
+  t.completedAt = nowStr;
+  t.completedDate = todayS;
+  t.needsMakeup = false;
   (t.subtasks||[]).forEach(st => st.done = true);
+
   save();
-  if(wasLate){
-    toast('✓ تم الإنجاز', `سُجّلت متأخرة — ${t.title}`, 'success');
+
+  if(newStatus === 'completed_late'){
+    toast('✓ تم الإنجاز', 'سُجّلت المهمة كمكتملة متأخرة.', 'success');
   } else {
     toast('✓ تم الإنجاز', `أحسنتِ يا سلمى! ${t.title}`, 'success');
   }
+
+  setTimeout(()=>{
+    const remaining = state.tasks.filter(x => x.date === todayS &&
+      (x.status === 'pending' || x.status === 'current') &&
+      !['prayer','sleep','break','routine','school'].includes(x.type)).length;
+    if(remaining === 0){
+      toast('🎉 ما شاء الله', 'أنجزتِ كل مهام اليوم!', 'success');
+    }
+  }, 1200);
+
   rerenderCurrentPage();
 }
 
@@ -1370,14 +1467,26 @@ function undoComplete(id){
   t.completedAt = null;
   t.completedDate = null;
   (t.subtasks||[]).forEach(st => st.done = false);
-  // إعادة حساب الحالة
+  // إعادة الحالة الصحيحة حسب الوقت
   const t_date = todayStr();
   const n = nowMin();
-  if(t.date > t_date) t.status = 'pending';
-  else if(t.date < t_date) t.status = 'missed';
-  else if(n < timeToMin(t.startTime)) t.status = 'pending';
-  else if(n < timeToMin(t.endTime)) t.status = 'current';
-  else t.status = 'missed';
+  if(t.status === 'completed_late'){
+    // إذا كانت متأخرة → أعِدها إلى needs_makeup (فقط إذا كانت تحتاج قضاء)
+    t.status = 'needs_makeup';
+    t.needsMakeup = true;
+  } else if(t.date > t_date){
+    t.status = 'pending';
+  } else if(t.date < t_date){
+    t.status = 'needs_makeup';
+    t.needsMakeup = true;
+  } else if(n < timeToMin(t.startTime)){
+    t.status = 'pending';
+  } else if(n < timeToMin(t.endTime)){
+    t.status = 'current';
+  } else {
+    t.status = 'needs_makeup';
+    t.needsMakeup = true;
+  }
   save();
   toast('↺ تراجع', 'أُعيدت المهمة إلى حالتها', '');
   rerenderCurrentPage();
@@ -1386,7 +1495,7 @@ function undoComplete(id){
 function toggleSubtask(taskId, idx){
   const t = state.tasks.find(x => x.id === taskId);
   if(!t || !t.subtasks[idx]) return;
-  if(t.status === 'completed') return;
+  if(t.status === 'completed' || t.status === 'completed_late') return;
   t.subtasks[idx].done = !t.subtasks[idx].done;
   if(t.subtasks.length && t.subtasks.every(st => st.done)){
     save(); completeTask(t.id); return;
@@ -1397,7 +1506,14 @@ function toggleSubtask(taskId, idx){
 function openTaskModal(id){
   const t = state.tasks.find(x => x.id === id);
   if(!t) return;
-  const statuses = [['pending','مجدولة'],['current','الآن'],['completed','مكتملة'],['missed','فاتت']];
+  const statuses = [
+    ['pending','مجدولة'],
+    ['current','الآن'],
+    ['completed','مكتملة'],
+    ['completed_late','مكتملة متأخرة'],
+    ['needs_makeup','تحتاج قضاء'],
+    ['makeup_scheduled','مجدولة للتعويض'],
+  ];
   openModal(`
     <div class="modal-head"><h3>✏️ ${escapeHtml(t.title)}</h3><button class="modal-close" onclick="closeModal()">✕</button></div>
     <div class="form-group"><label>العنوان</label><input id="mTitle" value="${escapeHtml(t.title)}"></div>
@@ -1429,6 +1545,7 @@ function openTaskModal(id){
         ${statuses.map(([v,l])=>`<option value="${v}" ${t.status===v?'selected':''}>${l}</option>`).join('')}
       </select>
     </div>
+    ${t.makeupDate?`<div class="missed-info">🔁 مجدولة للتعويض يوم ${formatDateAr(t.makeupDate)}</div>`:''}
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
       <button class="btn btn-primary" onclick="saveTaskEdit('${t.id}')">💾 حفظ</button>
       <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
@@ -1445,12 +1562,30 @@ function saveTaskEdit(id){
   t.subject = $('#mSubject').value;
   t.priority = $('#mPriority').value;
   const newStatus = $('#mStatus').value;
+  const wasCompleted = t.status === 'completed' || t.status === 'completed_late';
   t.status = newStatus;
-  if(newStatus === 'completed' && !t.completedAt){
+
+  if((newStatus === 'completed' || newStatus === 'completed_late') && !wasCompleted){
     t.completedAt = new Date().toISOString();
     t.completedDate = todayStr();
-  } else if(newStatus !== 'completed'){
-    t.completedAt = null; t.completedDate = null;
+    t.needsMakeup = false;
+  } else if(newStatus !== 'completed' && newStatus !== 'completed_late'){
+    t.completedAt = null;
+    t.completedDate = null;
+  }
+
+  if(newStatus === 'needs_makeup' || newStatus === 'makeup_scheduled'){
+    t.needsMakeup = true;
+    if(!t.makeupDate){
+      const fridayStr = getNextFriday();
+      t.makeupDate = dayOfWeek(t.date) === 5 ? t.date : fridayStr;
+      t.makeupScheduledAt = new Date().toISOString();
+      t.status = 'makeup_scheduled';
+    }
+  }
+  if(newStatus === 'completed' || newStatus === 'completed_late'){
+    // إزالة علامة الحاجة للتعويض
+    t.needsMakeup = false;
   }
   save(); closeModal();
   toast('💾 تم الحفظ', '', 'success');
@@ -1467,13 +1602,12 @@ $('#modalOverlay').addEventListener('click', e => { if(e.target.id === 'modalOve
 
 /* ============ Rerender ============ */
 function rerenderCurrentPage(){
-  const p = currentPage();
-  rerenderPage(p);
+  rerenderPage(currentPage());
   renderStats();
 }
 
 /* ============ Placeholder renderers ============ */
-function renderBooks(){ $('#booksContent').innerHTML = '<div class="empty-state">قسم الكتب — يمكن إضافة الكتب لاحقًا.</div>'; }
+function renderBooks(){ $('#booksContent').innerHTML = '<div class="empty-state">قسم الكتب.</div>'; }
 function renderNotes(){ $('#notesContent').innerHTML = '<div class="empty-state">قسم الملاحظات.</div>'; }
 function renderMistakes(){
   const groups = { physics:'⚛️ الفيزياء', math:'📐 الرياضيات', english:'🔤 الإنجليزي', earth:'🌍 علوم الأرض' };
@@ -1483,9 +1617,7 @@ function renderMistakes(){
       <div style="font-size:13.5px;font-weight:900;margin-bottom:10px;">${name}</div>
       ${items.length ? items.map(m=>`
         <div class="mistake-item ${m.mastered?'mastered':''}">
-          <div class="m-body">
-            <div class="m-text">${escapeHtml(m.type)}</div>
-          </div>
+          <div class="m-body"><div class="m-text">${escapeHtml(m.type)}</div></div>
           <button class="btn btn-outline btn-sm" onclick="toggleMistake('${m.id}')">${m.mastered?'↺':'✓'}</button>
         </div>
       `).join('') : '<div class="empty-state" style="padding:14px;">لا أخطاء.</div>'}
@@ -1534,7 +1666,7 @@ function renderProgress(){
     const ds = dateStr(d);
     const isFriday = d.getDay() === 5;
     const dayTasks = state.tasks.filter(x => x.date === ds && !['prayer','sleep','break','school','routine'].includes(x.type));
-    const done = dayTasks.filter(x => x.status === 'completed').length;
+    const done = dayTasks.filter(x => x.status === 'completed' || x.status === 'completed_late').length;
     const pct = dayTasks.length ? Math.round((done/dayTasks.length)*100) : 0;
     bars += `<div class="week-bar">
       <div style="font-size:10.5px;font-weight:800;">${pct}%</div>
@@ -1555,10 +1687,10 @@ function renderProgress(){
     </div>
     <div style="font-size:12.5px;color:var(--text-muted);">
       المكتملة: <strong>${s.allDone}</strong> من ${s.allTotal}<br>
-      فائتة: <strong style="color:var(--warning-text);">${s.missed}</strong>
+      تحتاج قضاء: <strong style="color:var(--warning-text);">${s.missed}</strong>
     </div>`;
   const completed = state.tasks
-    .filter(x => x.status === 'completed' && x.completedAt)
+    .filter(x => (x.status === 'completed' || x.status === 'completed_late') && x.completedAt)
     .sort((a,b)=> b.completedAt.localeCompare(a.completedAt)).slice(0,20);
   const grouped = {};
   completed.forEach(t=>{
@@ -1574,7 +1706,8 @@ function renderProgress(){
         ${grouped[d].map(t=>{
           const s = SUBJECTS[t.subject] || {name:t.subject, icon:''};
           const time = new Date(t.completedAt).toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});
-          return `<div style="font-size:12.5px;padding:6px 12px;background:var(--success-soft);border-radius:9px;margin-bottom:5px;">✓ ${s.icon} ${escapeHtml(s.name)} — ${escapeHtml(t.title)} <span style="color:var(--text-muted);font-size:11px;">(${time})</span></div>`;
+          const late = t.status === 'completed_late' ? ' <span style="color:var(--warning-text);font-size:11px;">(متأخرة)</span>' : '';
+          return `<div style="font-size:12.5px;padding:6px 12px;background:var(--success-soft);border-radius:9px;margin-bottom:5px;">✓ ${s.icon} ${escapeHtml(s.name)} — ${escapeHtml(t.title)} <span style="color:var(--text-muted);font-size:11px;">(${time})</span>${late}</div>`;
         }).join('')}
       </div>
     `).join('')
@@ -1593,25 +1726,21 @@ function updateLiveClock(){
 }
 
 /* ==========================================================
-   Tick — يقرأ الوقت الحقيقي كل ثانية لتحديث الساعة
-   وكل دقيقة لمزامنة حالات المهام
+   Tick — كل ثانية للساعة، وكل دقيقة للمزامنة
    ========================================================== */
 function tick(){
   updateLiveClock();
 
   const now = new Date();
   const minuteKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}-${now.getHours()}-${now.getMinutes()}`;
-  if(state.lastTick === minuteKey) return;
-  state.lastTick = minuteKey;
+  if(state.lastSyncKey === minuteKey) return;
+  state.lastSyncKey = minuteKey;
 
   const changed = syncTaskStatuses();
   const p = currentPage();
-
-  // تحديث الصفحات التي تعرض المهام
   if(['dashboard','tasks','missed','schedule','calendar','progress'].includes(p)){
     rerenderPage(p);
   } else {
-    // تحديث خفيف للإحصائيات والساعة
     renderStats();
   }
   updatePageSubtitle();
@@ -1621,6 +1750,8 @@ function tick(){
 function init(){
   load();
   buildInitialData();
+
+  // أول مزامنة فورية عند الفتح — يكتشف كل الحالات
   syncTaskStatuses();
   save();
 
@@ -1666,6 +1797,9 @@ function init(){
   // الساعة كل ثانية + فحص الحالات كل دقيقة
   setInterval(tick, 1000);
   setTimeout(tick, 1500);
+
+  // فحص إضافي بعد 30 ثانية (في حال كانت مهمة على وشك الانتهاء)
+  setTimeout(syncTaskStatuses, 30000);
 }
 
 document.addEventListener('DOMContentLoaded', init);
