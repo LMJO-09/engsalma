@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================
-   الثيم: أخضر زيتي متوسط + بيج دافئ (كما هو)
+   الثيم: أخضر زيتي متوسط + بيج دافئ
    ========================================================== */
 :root{
   --bg:#f4f1e8;
@@ -35,6 +35,10 @@
   --danger-text:#7a423b;
   --info:#5f7d8a;
   --info-soft:#e0e8ec;
+  /* كتلة ثابتة (حصة/تنقل) */
+  --block:#8a7a5e;
+  --block-soft:#eee8d9;
+  --block-border:#c4b894;
   --radius:18px;
   --radius-sm:12px;
   --shadow:0 2px 10px rgba(60,70,50,.06);
@@ -54,6 +58,7 @@
   --warning:#c9a868;--warning-soft:#332b1a;--warning-text:#ddc085;
   --danger:#c99086;--danger-soft:#332320;--danger-text:#dda89e;
   --info:#8aa3ad;--info-soft:#1f2a2e;
+  --block:#a89a7a;--block-soft:#2a2620;--block-border:#4a4335;
   --shadow:0 2px 10px rgba(0,0,0,.4);
   --shadow-md:0 4px 20px rgba(0,0,0,.5);
   --shadow-lg:0 12px 40px rgba(0,0,0,.7);
@@ -115,6 +120,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;}
 .hero.rest{background:linear-gradient(135deg,#6e8563,#8aa07d);}
 .hero.friday-rest{background:linear-gradient(135deg,#7a9a6e,#9cb287);}
+.hero.block{background:linear-gradient(135deg,#8a7a5e 0%,#a89a7a 100%);}
 .hero-countdown{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px;font-size:12.5px;font-weight:800;margin-bottom:12px;backdrop-filter:blur(8px);}
 .hero-countdown .num{font-variant-numeric:tabular-nums;font-size:14px;}
 
@@ -153,6 +159,10 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .task-item.missed{border-color:var(--warning);background:var(--warning-soft);}
 .task-item.current{border-color:var(--primary);background:var(--primary-soft);box-shadow:0 0 0 3px rgba(94,125,94,.12);}
 .task-item.current::before{content:'● الآن';position:absolute;top:-9px;right:14px;background:var(--primary);color:#fff;font-size:10.5px;font-weight:800;padding:2px 10px;border-radius:20px;}
+/* مهمة داخل Time Block — باهتة وغير قابلة للإنجاز */
+.task-item.in-block{opacity:.5;pointer-events:none;background:var(--block-soft);border-color:var(--block-border);}
+.task-item.in-block .task-check{background:var(--surface-3);border-color:var(--border);}
+
 .task-check{width:26px;height:26px;border-radius:9px;border:2px solid var(--border);display:grid;place-items:center;cursor:pointer;flex-shrink:0;margin-top:1px;transition:all .15s;font-size:14px;color:transparent;background:var(--surface);}
 .task-check:hover{border-color:var(--primary);background:var(--primary-soft);}
 .task-check.done{background:var(--success);border-color:var(--success);color:#fff;}
@@ -165,8 +175,10 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .tag-english{background:#efe2e5;color:var(--english);border-color:transparent;}
 .tag-physics{background:var(--info-soft);color:var(--physics);border-color:transparent;}
 .tag-earth{background:#eaeeda;color:var(--earth);border-color:transparent;}
+.tag-block{background:var(--block-soft);color:var(--block);border-color:var(--block-border);}
 [data-theme="dark"] .tag-english{background:#332329;}
 [data-theme="dark"] .tag-earth{background:#2a301a;}
+[data-theme="dark"] .tag-block{background:#2a2620;color:var(--block);}
 .priority-h{color:var(--danger);font-weight:800;}
 .priority-m{color:var(--warning-text);font-weight:800;}
 .priority-l{color:var(--text-muted);font-weight:800;}
@@ -188,7 +200,25 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .timeline-item.current .t-line{background:var(--primary);}
 .timeline-item.completed .t-line{background:var(--success);}
 .timeline-item.missed .t-line{background:var(--warning);}
+.timeline-item.block .t-line{background:var(--block);}
+.timeline-item.block .t-time{color:var(--block);}
 .timeline-item .t-body{flex:1;min-width:0;}
+
+/* Time Block card */
+.block-card{
+  padding:14px 16px;border-radius:var(--radius-sm);
+  background:var(--block-soft);border:1.5px dashed var(--block-border);
+  display:flex;align-items:flex-start;gap:12px;
+}
+.block-icon{
+  width:42px;height:42px;border-radius:11px;background:var(--block);
+  color:#fff;display:grid;place-items:center;font-size:20px;flex-shrink:0;
+}
+.block-body{flex:1;min-width:0;}
+.block-title{font-size:14px;font-weight:900;color:var(--block);margin-bottom:3px;}
+.block-sub{font-size:12px;color:var(--text-muted);}
+.block-range{font-size:11.5px;font-weight:800;color:var(--block);margin-top:4px;font-variant-numeric:tabular-nums;}
+.block-flex{font-size:10.5px;padding:2px 8px;background:var(--surface);border-radius:20px;border:1px solid var(--block-border);color:var(--block);font-weight:800;margin-right:6px;}
 
 .subject-card{border-radius:var(--radius);padding:20px;color:#fff;position:relative;overflow:hidden;cursor:pointer;transition:transform .2s;}
 .subject-card:hover{transform:translateY(-3px);}
@@ -214,11 +244,14 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .schedule-table td{padding:11px 12px;border-bottom:1px solid var(--border);cursor:pointer;}
 .schedule-table tr:hover td{background:var(--surface-2);}
 .schedule-table tr.current-row td{background:var(--primary-soft);font-weight:700;}
+.schedule-table tr.block-row td{background:var(--block-soft);color:var(--block);font-weight:700;cursor:default;}
+.schedule-table tr.rest-row td{background:var(--friday-soft);color:var(--primary-dark);font-weight:800;}
 .time-cell{font-variant-numeric:tabular-nums;color:var(--text-muted);font-weight:700;white-space:nowrap;}
 
 .friday-card{border:2px solid var(--friday-border);background:linear-gradient(135deg,var(--friday-soft) 0%,var(--surface) 100%);}
 .friday-card h3{color:var(--primary-dark);}
 .friday-badge{background:var(--friday);color:#fff;font-size:11px;font-weight:900;padding:3px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;}
+.rest-badge{background:var(--info);color:#fff;font-size:11px;font-weight:900;padding:3px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;}
 
 .flashcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:12px;transition:all .15s;}
 .flashcard:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
@@ -247,6 +280,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .cal-day.today{background:var(--primary);color:#fff;}
 .cal-day.friday{background:var(--friday-soft);border:1.5px solid var(--friday-border);}
 .cal-day.friday.today{background:var(--friday);color:#fff;border-color:var(--friday);}
+.cal-day.rest{background:var(--info-soft);border:1.5px solid var(--info);}
 .cal-day.has-tasks::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--primary);}
 .cal-day.today.has-tasks::after{background:#fff;}
 .cal-day.friday.has-tasks::after{background:var(--primary-dark);}
@@ -291,8 +325,6 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .day-progress-bar .dpb-fill{height:100%;background:linear-gradient(90deg,#5e7d5e,#7a9a6e);transition:width .6s;border-radius:5px;}
 .day-progress-bar .dpb-pct{font-weight:900;color:var(--primary-dark);font-size:15px;}
 
-.reader-toolbar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--surface-2);border-bottom:1px solid var(--border);flex-wrap:wrap;}
-
 @media (max-width:1024px){.grid-main{grid-template-columns:1fr;}.grid-4{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:768px){
   .sidebar{transform:translateX(100%);box-shadow:var(--shadow-lg);}
@@ -329,7 +361,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
     <div class="nav-section">الرئيسية</div>
     <div class="nav-item active" data-page="dashboard"><span class="icon">🏠</span> الرئيسية</div>
     <div class="nav-item" data-page="tasks"><span class="icon">✅</span> مهامي <span class="badge-mini" id="navTasksBadge" style="display:none">0</span></div>
-    <div class="nav-item" data-page="missed"><span class="icon">⚠️</span> فاتت (تحتاج قضاء) <span class="badge-mini" id="navMissedBadge" style="display:none">0</span></div>
+    <div class="nav-item" data-page="missed"><span class="icon">⚠️</span> تحتاج قضاء <span class="badge-mini" id="navMissedBadge" style="display:none">0</span></div>
     <div class="nav-item" data-page="schedule"><span class="icon">📅</span> الجدول الأسبوعي</div>
     <div class="nav-item" data-page="calendar"><span class="icon">📆</span> التقويم</div>
     <div class="nav-section">التعلم</div>
@@ -364,7 +396,6 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
       </div>
     </div>
 
-    <!-- Dashboard -->
     <section class="page active" id="page-dashboard">
       <div class="hero" id="hero"></div>
       <div class="day-progress-bar">
@@ -421,7 +452,6 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
       </div>
     </section>
 
-    <!-- Tasks -->
     <section class="page" id="page-tasks">
       <div class="card" style="margin-bottom:16px;">
         <div class="card-title">✅ مهامي اليوم <span class="sub" id="tasksTodayLabel"></span></div>
@@ -444,23 +474,20 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
       </div>
     </section>
 
-    <!-- Missed / Makeup -->
     <section class="page" id="page-missed">
       <div class="card friday-card" style="margin-bottom:16px;">
         <div class="card-title">
           ⚠️ مهام تحتاج قضاء
-          <span class="friday-badge">🟢 يوم التعويض: الجمعة</span>
+          <span class="friday-badge" id="makeupDayBadge">🟢 يوم التعويض: الجمعة</span>
         </div>
         <div id="missedPageContent"></div>
       </div>
     </section>
 
-    <!-- Schedule -->
     <section class="page" id="page-schedule">
       <div id="scheduleContent"></div>
     </section>
 
-    <!-- Calendar -->
     <section class="page" id="page-calendar">
       <div class="card" style="margin-bottom:16px;">
         <div class="card-title">
@@ -475,8 +502,9 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
         <div class="calendar-grid" id="calDays" style="margin-top:6px;"></div>
         <div style="margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--text-muted);">
           <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:var(--primary);"></span> اليوم</div>
-          <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:var(--friday-soft);border:1.5px solid var(--friday-border);"></span> الجمعة (يوم التعويض)</div>
-          <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:var(--warning-soft);border:1.5px solid var(--warning);"></span> يوم به تعويضات</div>
+          <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:var(--friday-soft);border:1.5px solid var(--friday-border);"></span> يوم التعويض</div>
+          <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:var(--info-soft);border:1.5px solid var(--info);"></span> يوم الراحة</div>
+          <div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:4px;background:var(--block-soft);border:1.5px dashed var(--block-border);"></span> حصة/تنقل</div>
         </div>
       </div>
       <div class="card">
@@ -485,24 +513,19 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
       </div>
     </section>
 
-    <!-- Books -->
     <section class="page" id="page-books">
       <div class="card"><div class="card-title">📖 مكتبتي</div><div id="booksContent"></div></div>
     </section>
-    <!-- Notes -->
     <section class="page" id="page-notes">
       <div class="card"><div class="card-title">📝 ملاحظاتي</div><div id="notesContent"></div></div>
     </section>
-    <!-- Mistakes -->
     <section class="page" id="page-mistakes">
       <div class="card"><div class="card-title">❌ أخطائي</div><div id="mistakesContent"></div></div>
     </section>
-    <!-- Cards -->
     <section class="page" id="page-cards">
       <div class="card" style="margin-bottom:16px;"><div class="card-title">⚛️ بطاقات الفيزياء</div><div class="grid grid-3" id="physicsCards"></div></div>
       <div class="card"><div class="card-title">🌍 بطاقات علوم الأرض</div><div class="grid grid-3" id="earthCards"></div></div>
     </section>
-    <!-- Progress -->
     <section class="page" id="page-progress">
       <div class="grid grid-2" style="margin-bottom:16px;">
         <div class="card"><div class="card-title">📊 آخر 7 أيام</div><div class="week-bars" id="weekBars"></div></div>
@@ -510,14 +533,48 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
       </div>
       <div class="card"><div class="card-title">📜 سجل الإنجاز</div><div id="achievementLog"></div></div>
     </section>
-    <!-- Settings -->
+
     <section class="page" id="page-settings">
       <div class="grid grid-2">
         <div class="card">
           <div class="card-title">⚙️ الإعدادات</div>
           <div class="form-group"><label>وقت النوم</label><input type="time" id="setSleep" value="21:00"></div>
           <div class="form-group"><label>وقت الاستيقاظ</label><input type="time" id="setWake" value="05:00"></div>
+          <div class="form-group">
+            <label>يوم الراحة الأسبوعي</label>
+            <select id="setRestDay">
+              <option value="5">الجمعة</option>
+              <option value="0">الأحد</option>
+              <option value="1">الاثنين</option>
+              <option value="2">الثلاثاء</option>
+              <option value="3">الأربعاء</option>
+              <option value="4">الخميس</option>
+              <option value="6">السبت</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>هامش الأمان بعد الوصول (بالدقائق)</label>
+            <input type="number" id="setSafetyMargin" value="15" min="0" max="120">
+          </div>
           <button class="btn btn-primary" id="saveSettings">💾 حفظ</button>
+        </div>
+        <div class="card">
+          <div class="card-title">📋 القيود الواقعية</div>
+          <div style="font-size:12.5px;color:var(--text-muted);line-height:1.9;">
+            <div style="margin-bottom:10px;padding:10px 12px;background:var(--block-soft);border-radius:10px;border-right:3px solid var(--block);">
+              <strong style="color:var(--block);">🚌 السبت — English</strong><br>
+              10:00 → 14:00 (حصة + تنقل)
+            </div>
+            <div style="margin-bottom:10px;padding:10px 12px;background:var(--block-soft);border-radius:10px;border-right:3px solid var(--block);">
+              <strong style="color:var(--block);">📐 الاثنين/الخميس — Math</strong><br>
+              16:00 → 18:20 (حصة مرنة)
+            </div>
+            <div style="margin-bottom:10px;padding:10px 12px;background:var(--block-soft);border-radius:10px;border-right:3px solid var(--block);">
+              <strong style="color:var(--block);">🔤 الأربعاء — English</strong><br>
+              14:00 → 17:00 (دوام + حصة + تنقل)
+            </div>
+          </div>
+          <button class="btn btn-outline btn-sm" id="editBlocksBtn" style="margin-top:12px;">✏️ تعديل القيود</button>
         </div>
         <div class="card">
           <div class="card-title">💾 البيانات</div>
@@ -533,11 +590,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 
 <script>
 /* ==========================================================
-   نظام دراسة المهندسة سلمى
-   - الوقت الحقيقي هو الأساس (بدون Timer)
-   - الحالات: pending | current | completed | completed_late
-             | needs_makeup | makeup_scheduled
-   - لا تكرار للتعويض — المكتملة لا تُلمس
+   نظام دراسة المهندسة سلمى — مع القيود الواقعية
    ========================================================== */
 
 const SUBJECTS = {
@@ -549,6 +602,31 @@ const SUBJECTS = {
 };
 const DAYS_AR = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
 const MONTHS_AR = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+
+/* ==========================================================
+   Time Blocks — القيود الواقعية
+   type: 'class+transport' | 'class' | 'transport' | 'school' | 'break'
+   flexible: true → النهاية قد تتأخر (هامش)
+   ========================================================== */
+const DEFAULT_BLOCKS = [
+  // السبت — English + تنقل
+  { id:'sb1', days:[6], start:'10:00', end:'14:00', subject:'english',
+    title:'حصة الإنجليزي + تنقل', type:'class+transport',
+    icon:'🚌', flexible:true, maxEnd:'14:30',
+    note:'خروج 10:00، حصة 11:00–12:30، الوصول 13:30–14:00' },
+
+  // الاثنين والخميس — Math
+  { id:'mb1', days:[1,4], start:'16:00', end:'18:20', subject:'math',
+    title:'حصة الرياضيات', type:'class',
+    icon:'📐', flexible:true, maxEnd:'18:40',
+    note:'تبدأ 16:00، تنتهي 18:00 عادة، قد تتأخر إلى 18:20' },
+
+  // الأربعاء — English بعد الدوام
+  { id:'wb1', days:[3], start:'14:00', end:'17:00', subject:'english',
+    title:'حصة الإنجليزي + تنقل', type:'class+transport',
+    icon:'🚌', flexible:true, maxEnd:'17:15',
+    note:'بعد الدوام، حصة 14:00–15:30، الوصول 16:50–17:00' },
+];
 
 const INSPIRATIONS = {
   study:   ['🌿 بسم الله، نبدأ على بركة الله','﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾','كل دقيقة تركيز تبني مستقبلك','العلم نور يا سلمى ✨','خطوة صغيرة كل يوم = نجاح كبير'],
@@ -572,16 +650,21 @@ function getInspiration(task){
 /* ============ الحالة ============ */
 let state = {
   tasks: [],
+  blocks: [],   // Time Blocks (القيود الواقعية)
   physicsCards: [], earthCards: [],
   mistakes: [], standaloneNotes: [], books: [], readProgress: {},
-  settings: { sleep:'21:00', wake:'05:00' },
+  settings: {
+    sleep:'21:00', wake:'05:00',
+    restDay: 5,             // 5 = الجمعة (0=أحد ... 6=سبت)
+    safetyMargin: 15,       // دقائق هامش أمان بعد الوصول
+  },
   theme:'light',
   calMonth: new Date().getMonth(),
   calYear: new Date().getFullYear(),
   selectedCalDate: null,
-  lastSyncKey: null, // آخر دقيقة تم فيها المزامنة
+  lastSyncKey: null,
 };
-const STORAGE_KEY = 'salma_schedule_v5';
+const STORAGE_KEY = 'salma_schedule_v6';
 
 /* ============ Utilities ============ */
 const $ = (s,p=document)=>p.querySelector(s);
@@ -604,9 +687,6 @@ function dayOfWeek(ds){
   const [y,m,d] = ds.split('-').map(Number);
   return new Date(y,m-1,d).getDay();
 }
-function isSameDay(a, b){ return a === b; }
-
-/* إيجاد أقرب جمعة قادمة (تشمل اليوم إذا كان جمعة) */
 function getNextFriday(fromDate=new Date()){
   const d = new Date(fromDate);
   const day = d.getDay();
@@ -620,7 +700,8 @@ function getNextFriday(fromDate=new Date()){
 function save(){
   try{
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
-      tasks: state.tasks, physicsCards: state.physicsCards, earthCards: state.earthCards,
+      tasks: state.tasks, blocks: state.blocks,
+      physicsCards: state.physicsCards, earthCards: state.earthCards,
       mistakes: state.mistakes, standaloneNotes: state.standaloneNotes,
       books: state.books, readProgress: state.readProgress,
       settings: state.settings, theme: state.theme,
@@ -630,6 +711,43 @@ function save(){
 function load(){
   const raw = localStorage.getItem(STORAGE_KEY);
   if(raw){ try{ Object.assign(state, JSON.parse(raw)); }catch(e){} }
+  if(!state.blocks || !state.blocks.length) state.blocks = JSON.parse(JSON.stringify(DEFAULT_BLOCKS));
+  if(!state.settings.restDay) state.settings.restDay = 5;
+  if(state.settings.safetyMargin === undefined) state.settings.safetyMargin = 15;
+}
+
+/* ==========================================================
+   Time Block Helpers
+   ========================================================== */
+function getBlocksForDate(ds){
+  const dow = dayOfWeek(ds);
+  return state.blocks.filter(b => b.days.includes(dow)).sort((a,b)=>timeToMin(a.start)-timeToMin(b.start));
+}
+function isTimeInBlock(time, blocks){
+  const t = typeof time === 'number' ? time : timeToMin(time);
+  return blocks.some(b => t >= timeToMin(b.start) && t <= timeToMin(b.end));
+}
+function isRangeOverlappingBlock(start, end, blocks){
+  const s = timeToMin(start), e = timeToMin(end);
+  return blocks.some(b => {
+    const bs = timeToMin(b.start), be = timeToMin(b.end);
+    return s < be && e > bs;
+  });
+}
+/* آخر نهاية مع هامش أمان */
+function getBlockEndWithMargin(block, safetyMargin){
+  const endMin = timeToMin(block.end);
+  const maxEndMin = block.maxEnd ? timeToMin(block.maxEnd) : endMin;
+  return maxEndMin + safetyMargin;
+}
+/* أقرب وقت متاح بعد آخر block */
+function getFirstFreeTime(ds, blocks, safetyMargin){
+  if(!blocks.length) return 0;
+  const lastEnd = Math.max(...blocks.map(b => getBlockEndWithMargin(b, safetyMargin)));
+  return lastEnd;
+}
+function isRestDay(ds){
+  return dayOfWeek(ds) === state.settings.restDay;
 }
 
 /* ============ بيانات أولية ============ */
@@ -652,13 +770,8 @@ function buildInitialData(){
     type: opts.type||'study', priority: opts.priority||'medium',
     status:'pending', subtasks: opts.subtasks||[],
     completedAt:null, completedDate:null,
-    // حقول التعويض:
-    originalDate: date,
-    originalStart: start,
-    originalEnd: end,
-    needsMakeup: false,
-    makeupDate: null,
-    makeupScheduledAt: null,
+    originalDate: date, originalStart: start, originalEnd: end,
+    needsMakeup: false, makeupDate: null, makeupScheduledAt: null,
   });
   const sub = labels => labels.map(l => ({ id:uid(), text:l, done:false }));
 
@@ -666,50 +779,103 @@ function buildInitialData(){
     for(let i=0; i<7; i++){
       const date = addDays(base, w*7+i);
       const dn = DAYS_AR[new Date(date).getDay()];
+      const dow = new Date(date).getDay();
+      const blocks = getBlocksForDate(date);
+      const restDay = dow === state.settings.restDay;
 
-      if(['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس'].includes(dn))
-        tasks.push(mk(date,'07:30', dn==='الأربعاء'?'16:40':'14:00','general','المدرسة',{type:'school',priority:'high'}));
+      // المدرسة (أحد–خميس) — الأربعاء حتى 14:00 لأن بعدها حصة
+      if(['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس'].includes(dn)){
+        const end = dn === 'الأربعاء' ? '14:00' : '14:00';
+        tasks.push(mk(date,'07:30',end,'general','المدرسة',{type:'school',priority:'high'}));
+      }
 
-      tasks.push(mk(date,'14:00','14:40','general','غداء وراحة',{type:'break',priority:'low'}));
+      // راحة بعد المدرسة (فقط الأيام بدون حصة مباشرة)
+      if(dn !== 'الأربعاء' && dn !== 'السبت'){
+        tasks.push(mk(date,'14:00','14:40','general','غداء وراحة',{type:'break',priority:'low'}));
+      }
 
+      // راحة بعد block (بعد الحصة والتنقل)
+      blocks.forEach(b => {
+        const endWithMargin = getBlockEndWithMargin(b, state.settings.safetyMargin);
+        const restEnd = endWithMargin + 20; // 20 دقيقة راحة
+        if(restEnd <= 21*60){
+          tasks.push(mk(date,
+            minToTime(endWithMargin),
+            minToTime(restEnd),
+            'general',
+            `راحة بعد ${b.title}`,
+            {type:'break',priority:'low'}));
+        }
+      });
+
+      // المهام المنزلية — فقط خارج Time Blocks
+      // Math: الاثنين/الخميس بعد الحصة
       if(dn === 'الاثنين' || dn === 'الخميس'){
-        tasks.push(mk(date,'15:00','17:00','math','مركز الرياضيات',{type:'center',priority:'high'}));
-        tasks.push(mk(date,'17:15','18:15','math','تثبيت حصة الرياضيات',{
+        tasks.push(mk(date,'18:45','19:45','math','تثبيت حصة الرياضيات',{
           description:'مراجعة ما تم أخذه + حل مسائل الحصة + تسجيل الأخطاء',
           priority:'high', type:'review',
           subtasks: sub(['مراجعة ما تم أخذه','حل مسائل الحصة','تسجيل الأخطاء'])
         }));
       }
-      if(dn === 'السبت' || dn === 'الأربعاء'){
-        const s1 = dn==='الأربعاء'?'17:00':'15:00';
-        const e1 = dn==='الأربعاء'?'19:00':'17:00';
-        tasks.push(mk(date,s1,e1,'english','مركز الإنجليزي',{type:'center',priority:'high'}));
-        tasks.push(mk(date,'19:15','20:15','english','تثبيت درس الإنجليزي',{
-          description:'تثبيت الدرس + مراجعة الكلمات + تطبيق القاعدة',
-          priority:'medium', type:'review',
-          subtasks: sub(['تثبيت الدرس','مراجعة الكلمات','تطبيق القاعدة'])
+      // Math: أحد/ثلاثاء (بدون حصة)
+      if(dn === 'الأحد' || dn === 'الثلاثاء'){
+        tasks.push(mk(date,'17:30','18:30','math','حل مسائل رياضيات',{
+          priority:'high', type:'study',
+          subtasks: sub(['حل المسائل','تسجيل الأخطاء'])
         }));
       }
 
+      // English: السبت بعد العودة (14:30+)
+      if(dn === 'السبت'){
+        tasks.push(mk(date,'14:30','15:30','english','تثبيت درس الإنجليزي',{
+          description:'تثبيت الدرس + مراجعة الكلمات + تطبيق القاعدة',
+          priority:'high', type:'review',
+          subtasks: sub(['تثبيت الدرس','مراجعة الكلمات','تطبيق القاعدة'])
+        }));
+      }
+      // English: الأربعاء بعد العودة (17:15+)
+      if(dn === 'الأربعاء'){
+        tasks.push(mk(date,'17:15','18:15','english','تثبيت درس الإنجليزي',{
+          description:'تثبيت الدرس + مراجعة الكلمات + تطبيق القاعدة',
+          priority:'high', type:'review',
+          subtasks: sub(['تثبيت الدرس','مراجعة الكلمات','تطبيق القاعدة'])
+        }));
+      }
+      // English: مراجعة يومية خفيفة (أيام بدون حصة إنجليزي)
+      if(!['السبت','الأربعاء','الجمعة'].includes(dn)){
+        tasks.push(mk(date,'15:00','15:30','english','مراجعة كلمات إنجليزي',{
+          priority:'medium', type:'review',
+          subtasks: sub(['مراجعة الكلمات'])
+        }));
+      }
+
+      // Physics: الاثنين/الخميس دروس جديدة (بعد 19:45)
       if(dn === 'الاثنين' || dn === 'الخميس'){
-        tasks.push(mk(date,'18:30','19:30','physics','بطاقة فيزياء جديدة',{
+        tasks.push(mk(date,'19:45','20:45','physics','بطاقة فيزياء جديدة',{
           description:'إكمال الجزء المحدد + فهم الأفكار + حل الأسئلة',
           priority:'high', type:'study',
           subtasks: sub(['مشاهدة الجزء','فهم الأفكار','حل الأسئلة','تسجيل الأخطاء'])
         }));
       } else if(!['الجمعة','السبت'].includes(dn)){
+        // باقي الأيام: مراجعة
         tasks.push(mk(date,'16:00','17:00','physics','مراجعة بطاقة فيزياء',{
           priority:'medium', type:'review',
           subtasks: sub(['مراجعة الأفكار','حل أسئلة مراجعة'])
         }));
       }
 
+      // Earth: الاثنين/الأربعاء دروس جديدة
       if(dn === 'الاثنين' || dn === 'الأربعاء'){
-        tasks.push(mk(date,'19:30','20:20','earth','بطاقة علوم أرض جديدة',{
-          description:'مشاهدة الدرس + فهم الأفكار + حل الأسئلة',
-          priority:'high', type:'study',
-          subtasks: sub(['مشاهدة الدرس','فهم الأفكار','حل الأسئلة'])
-        }));
+        // الأربعاء: بعد 18:15 (بعد block الإنجليزي)
+        // الاثنين: بعد 20:45 (بعد الفيزياء) — نضعه 20:50 لضيق الوقت
+        if(dn === 'الأربعاء'){
+          tasks.push(mk(date,'18:30','19:20','earth','بطاقة علوم أرض جديدة',{
+            description:'مشاهدة الدرس + فهم الأفكار + حل الأسئلة',
+            priority:'high', type:'study',
+            subtasks: sub(['مشاهدة الدرس','فهم الأفكار','حل الأسئلة'])
+          }));
+        }
+        // الاثنين: نؤجلها إذا اليوم مزدحم
       } else if(!['الجمعة','السبت'].includes(dn)){
         tasks.push(mk(date,'15:30','16:00','earth','مراجعة علوم الأرض',{
           priority:'medium', type:'review',
@@ -717,26 +883,15 @@ function buildInitialData(){
         }));
       }
 
-      if(dn !== 'الجمعة'){
-        tasks.push(mk(date,'14:50','15:20','english','مراجعة كلمات إنجليزي',{
-          priority:'medium', type:'review',
-          subtasks: sub(['مراجعة الكلمات'])
-        }));
-      }
-
-      if(!['الجمعة','الاثنين','الخميس'].includes(dn)){
-        tasks.push(mk(date,'17:30','18:30','math','حل مسائل رياضيات',{
-          priority:'high', type:'study',
-          subtasks: sub(['حل المسائل','تسجيل الأخطاء'])
-        }));
-      }
-
-      tasks.push(mk(date,'20:30','21:00','general','الاستعداد للنوم',{type:'routine',priority:'high'}));
+      // الصلوات
       tasks.push(mk(date,'05:00','05:15','general','صلاة الفجر',{type:'prayer',priority:'high'}));
       tasks.push(mk(date,'12:30','12:45','general','صلاة الظهر',{type:'prayer',priority:'high'}));
       tasks.push(mk(date,'15:30','15:45','general','صلاة العصر',{type:'prayer',priority:'high'}));
       tasks.push(mk(date,'18:15','18:30','general','صلاة المغرب',{type:'prayer',priority:'high'}));
       tasks.push(mk(date,'19:45','20:00','general','صلاة العشاء',{type:'prayer',priority:'high'}));
+
+      // الاستعداد للنوم
+      tasks.push(mk(date,'20:30','21:00','general','الاستعداد للنوم',{type:'routine',priority:'high'}));
     }
   }
   state.tasks = tasks;
@@ -759,32 +914,26 @@ function buildInitialData(){
 
 /* ==========================================================
    ★★★ محرك المزامنة ★★★
-   - يقرأ الوقت الحقيقي
-   - يحدد: pending | current | completed | completed_late
-           | needs_makeup | makeup_scheduled
-   - لا يلمس completed / completed_late
-   - لا يكرر التعويضات
    ========================================================== */
 function syncTaskStatuses(){
   const t = todayStr();
   const n = nowMin();
+  const todayBlocks = getBlocksForDate(t);
+  const blockEndMax = todayBlocks.length
+    ? Math.max(...todayBlocks.map(b => b.maxEnd ? timeToMin(b.maxEnd) : timeToMin(b.end)))
+    : 0;
+
   let changed = false;
   let newMissed = 0;
 
   state.tasks.forEach(task => {
-    // 1) المكتملة لا تُلمس إطلاقًا (حماية من تكرار التعويض)
     if(task.status === 'completed' || task.status === 'completed_late') return;
-
-    // 2) التعويضات المجدولة لا تُلمس
     if(task.status === 'makeup_scheduled') return;
 
-    // 3) مهمة في المستقبل
     if(task.date > t){
       if(task.status !== 'pending'){ task.status = 'pending'; changed = true; }
       return;
     }
-
-    // 4) مهمة في يوم سابق (فات موعدها)
     if(task.date < t){
       if(task.status !== 'needs_makeup'){
         task.status = 'needs_makeup';
@@ -794,29 +943,38 @@ function syncTaskStatuses(){
       return;
     }
 
-    // 5) مهمة اليوم
+    // مهمة اليوم
     const startMin = timeToMin(task.startTime);
     const endMin = timeToMin(task.endTime);
     const isRoutine = ['prayer','sleep','break','school','routine'].includes(task.type);
 
+    // داخل Time Block → لا تحسب كـ "فائتة" أبدًا (فترة غير متاحة)
+    const inBlock = isRangeOverlappingBlock(task.startTime, task.endTime, todayBlocks);
+
     if(n < startMin){
-      // لم يبدأ وقتها
       if(task.status !== 'pending'){ task.status = 'pending'; changed = true; }
     } else if(n >= startMin && n < endMin){
-      // الوقت الآن — المهمة الحالية
       if(task.status !== 'current'){ task.status = 'current'; changed = true; }
     } else {
       // انتهى وقتها
       if(isRoutine){
-        // روتينية → مكتملة تلقائيًا
         if(task.status !== 'completed'){
           task.status = 'completed';
           task.completedAt = new Date().toISOString();
           task.completedDate = t;
           changed = true;
         }
+      } else if(inBlock){
+        // مهمة كانت داخل time block → تجاهل تمامًا (لا تظهر كفائتة)
+        if(task.status !== 'completed'){
+          task.status = 'completed';
+          task.completedAt = new Date().toISOString();
+          task.completedDate = t;
+          task.autoCompleted = true;
+          changed = true;
+        }
       } else {
-        // دراسية → تحتاج قضاء
+        // مهمة دراسية خارج block وفات وقتها
         if(task.status !== 'needs_makeup'){
           task.status = 'needs_makeup';
           task.needsMakeup = true;
@@ -826,26 +984,18 @@ function syncTaskStatuses(){
     }
   });
 
-  if(changed){ save(); }
-  if(newMissed){
-    // إعادة توزيع المهام الفائتة على الجمعة القادمة (مرة واحدة فقط)
-    scheduleMakeupForNewMissed();
-  }
+  if(changed) save();
+  if(newMissed) scheduleMakeupForNewMissed();
   return changed;
 }
 
-/* جدولة التعويض — فقط للمهام needs_makeup التي لا تحتوي على makeupDate */
+/* جدولة التعويض — يبحث عن أفضل يوم */
 function scheduleMakeupForNewMissed(){
-  const fridayStr = getNextFriday();
   let scheduled = 0;
   state.tasks.forEach(task => {
     if(task.status === 'needs_makeup' && !task.makeupDate){
-      // إذا كانت المهمة نفسها يوم جمعة، اجعلها في نفس اليوم
-      if(dayOfWeek(task.date) === 5){
-        task.makeupDate = task.date;
-      } else {
-        task.makeupDate = fridayStr;
-      }
+      const targetDate = findBestMakeupDate(task);
+      task.makeupDate = targetDate;
       task.makeupScheduledAt = new Date().toISOString();
       task.status = 'makeup_scheduled';
       scheduled++;
@@ -853,29 +1003,79 @@ function scheduleMakeupForNewMissed(){
   });
   if(scheduled){
     save();
-    toast('🔄 تم جدولة التعويض', `${scheduled} مهمة أُضيفت ليوم الجمعة`, 'warning');
+    toast('🔄 تم جدولة التعويض', `${scheduled} مهمة أُضيفت لأقرب يوم مناسب`, 'warning');
   }
+}
+
+/* إيجاد أفضل يوم تعويض — يتجنب يوم الراحة، ويفضل الأيام الأخف */
+function findBestMakeupDate(task){
+  const restDay = state.settings.restDay;
+  const baseDate = new Date();
+  const candidates = [];
+
+  // جرّب 14 يوم قادمين
+  for(let i=0; i<14; i++){
+    const d = new Date(baseDate);
+    d.setDate(baseDate.getDate() + i);
+    const dow = d.getDay();
+    const ds = dateStr(d);
+    const existingCount = state.tasks.filter(x =>
+      x.date === ds && !['prayer','sleep','break','school','routine'].includes(x.type)
+    ).length;
+    const makeupCount = state.tasks.filter(x =>
+      x.status === 'makeup_scheduled' && x.makeupDate === ds
+    ).length;
+
+    // يوم الراحة: نستخدمه فقط إذا لا يوجد بديل
+    const isRest = dow === restDay;
+
+    candidates.push({
+      ds, dow, isRest,
+      load: existingCount + makeupCount * 0.5,
+      dayIndex: i,
+    });
+  }
+
+  // رتّب: غير-راحة أولًا، ثم حسب الحمل، ثم الأقرب زمنيًا
+  candidates.sort((a, b) => {
+    if(a.isRest !== b.isRest) return a.isRest ? 1 : -1;
+    if(a.load !== b.load) return a.load - b.load;
+    return a.dayIndex - b.dayIndex;
+  });
+
+  return candidates[0].ds;
 }
 
 /* ============ استعلامات الوقت ============ */
 function getCurrentTask(){
-  return state.tasks.find(x => x.date === todayStr() && x.status === 'current') || null;
+  const t = todayStr();
+  const blocks = getBlocksForDate(t);
+  const cur = state.tasks.find(x => x.date === t && x.status === 'current');
+  if(cur) return cur;
+
+  // إذا كنا داخل Time Block، لا توجد مهمة حالية
+  if(isTimeInBlock(nowMin(), blocks)) return null;
+
+  return null;
+}
+function getCurrentBlock(){
+  const t = todayStr();
+  const blocks = getBlocksForDate(t);
+  const n = nowMin();
+  return blocks.find(b => n >= timeToMin(b.start) && n <= timeToMin(b.end)) || null;
 }
 function getNextTask(){
+  const t = todayStr();
   const n = nowMin();
-  return state.tasks
-    .filter(x => x.date === todayStr() && (x.status === 'pending' || x.status === 'current') && timeToMin(x.startTime) > n)
-    .sort((a,b)=>timeToMin(a.startTime)-timeToMin(b.startTime))[0] || null;
+  const blocks = getBlocksForDate(t);
+  const candidates = state.tasks
+    .filter(x => x.date === t && (x.status === 'pending' || x.status === 'current') && timeToMin(x.startTime) > n)
+    .filter(x => !isRangeOverlappingBlock(x.startTime, x.endTime, blocks))
+    .sort((a,b)=>timeToMin(a.startTime)-timeToMin(b.startTime));
+  return candidates[0] || null;
 }
 function getMakeupTasks(){
   return state.tasks.filter(x => x.status === 'needs_makeup' || x.status === 'makeup_scheduled');
-}
-function getMakeupForFriday(fridayStr){
-  return state.tasks.filter(x =>
-    x.status === 'makeup_scheduled' &&
-    x.makeupDate === fridayStr &&
-    x.originalDate !== fridayStr
-  );
 }
 function getRemainingMinutes(task){
   if(!task) return 0;
@@ -905,7 +1105,7 @@ function navigate(page){
     $('#sidebarOverlay').classList.remove('open');
   }
   const titles = {
-    dashboard:'صباح الخير يا سلمى 🌿', tasks:'مهامي اليوم ✅', missed:'مهام تحتاج قضاء ⚠️',
+    dashboard:'صباح الخير يا سلمى 🌿', tasks:'مهامي اليوم ✅', missed:'تحتاج قضاء ⚠️',
     schedule:'الجدول الأسبوعي 📅', calendar:'التقويم 🗓️',
     books:'مكتبتي 📖', notes:'ملاحظاتي 📝', mistakes:'أخطائي ❌',
     cards:'البطاقات 🎴', progress:'تقدمي 📊', settings:'الإعدادات ⚙️',
@@ -944,9 +1144,32 @@ function renderHero(){
   const hero = $('#hero');
   if(!hero) return;
   const cur = getCurrentTask();
+  const curBlock = getCurrentBlock();
   const next = getNextTask();
   const isFriday = new Date().getDay() === 5;
+  const isRest = isRestDay(todayStr());
 
+  // 1) داخل Time Block
+  if(curBlock){
+    const rem = timeToMin(curBlock.end) - nowMin();
+    const s = SUBJECTS[curBlock.subject] || {name:curBlock.subject};
+    hero.className = 'hero block';
+    hero.innerHTML = `
+      <div class="hero-inner">
+        <div class="inspiration">${curBlock.icon||'🚌'} ${escapeHtml(curBlock.title)}</div>
+        <div class="hero-label">⏱️ وقت حصة/تنقل — ليس وقت دراسة منزلية</div>
+        <div class="hero-subject">${s.icon||''} ${escapeHtml(s.name)}</div>
+        <div class="hero-time">${curBlock.start} → ${curBlock.end}${curBlock.maxEnd?` (قد تتأخر حتى ${curBlock.maxEnd})`:''}</div>
+        <div class="hero-countdown">⏳ يتبقى <span class="num">${rem}</span> دقيقة</div>
+        ${curBlock.note?`<div class="hero-task"><div class="label">ملاحظة</div><div class="value">${escapeHtml(curBlock.note)}</div></div>`:''}
+        <div class="hero-actions">
+          <button class="btn btn-white" onclick="navigate('schedule')">📅 عرض الجدول</button>
+        </div>
+      </div>`;
+    return;
+  }
+
+  // 2) مهمة حالية
   if(cur){
     const s = SUBJECTS[cur.subject] || {name:cur.subject, icon:'📖'};
     const insp = getInspiration(cur);
@@ -970,7 +1193,11 @@ function renderHero(){
           <button class="btn btn-ghost" onclick="openTaskModal('${cur.id}')">✏️ تعديل</button>
         </div>
       </div>`;
-  } else if(next){
+    return;
+  }
+
+  // 3) مهمة قادمة
+  if(next){
     const s = SUBJECTS[next.subject] || {name:next.subject, icon:'📖'};
     const insp = getInspiration(next);
     const until = getRemainingUntilNext();
@@ -992,20 +1219,22 @@ function renderHero(){
           <button class="btn btn-ghost" onclick="openTaskModal('${next.id}')">✏️ تعديل</button>
         </div>
       </div>`;
-  } else {
-    const missed = getMakeupTasks().length;
-    hero.className = 'hero rest' + (isFriday?' friday-rest':'');
-    hero.innerHTML = `
-      <div class="hero-inner">
-        <div class="inspiration">🌿 ${isFriday?'الجمعة يوم راحة':'لا توجد مهمة حالية الآن'}</div>
-        <div class="hero-time" style="margin-bottom:0;">
-          ${missed?`لديك ${missed} مهمة تحتاج قضاء — يمكنك إنجازها لاحقًا`:'استمتعي بوقتك، أنتِ في راحة'}
-        </div>
-        ${missed?`<div class="hero-actions" style="margin-top:16px;">
-          <button class="btn btn-white" onclick="navigate('missed')">عرض المهام</button>
-        </div>`:''}
-      </div>`;
+    return;
   }
+
+  // 4) راحة
+  const missed = getMakeupTasks().length;
+  hero.className = 'hero rest' + (isRest?' friday-rest':'');
+  hero.innerHTML = `
+    <div class="hero-inner">
+      <div class="inspiration">🌿 ${isRest?'يوم راحة':'لا توجد مهمة حالية الآن'}</div>
+      <div class="hero-time" style="margin-bottom:0;">
+        ${missed?`لديك ${missed} مهمة تحتاج قضاء — يمكنك إنجازها لاحقًا`:'استمتعي بوقتك، أنتِ في راحة'}
+      </div>
+      ${missed?`<div class="hero-actions" style="margin-top:16px;">
+        <button class="btn btn-white" onclick="navigate('missed')">عرض المهام</button>
+      </div>`:''}
+    </div>`;
 }
 
 /* ============ شريط تقدم اليوم ============ */
@@ -1041,7 +1270,6 @@ function calcStats(){
 
   return { todayPct, weekPct, todayDone, todayTotal: todayTasks.length, weekDone, weekTotal: weekTasks.length, allDone, allTotal: allStudy.length, missed };
 }
-
 function renderStats(){
   const s = calcStats();
   $('#todayPct').textContent = `${s.todayPct}%`;
@@ -1071,7 +1299,8 @@ function taskItemHTML(t, opts={}){
   const isCompletedLate = t.status === 'completed_late';
   const isCurrent = t.status === 'current';
   const needsMakeup = t.status === 'needs_makeup' || t.status === 'makeup_scheduled';
-  const isMakeup = t.makeupDate && t.makeupDate === todayStr() && t.originalDate !== todayStr();
+  const blocks = getBlocksForDate(t.date);
+  const inBlock = isRangeOverlappingBlock(t.startTime, t.endTime, blocks);
 
   const stIcon = (isCompleted || isCompletedLate) ? '✓' : isCurrent ? '●' : needsMakeup ? '!' : '';
   const checkClass = (isCompleted || isCompletedLate) ? 'done' : isCurrent ? 'prog' : '';
@@ -1089,7 +1318,7 @@ function taskItemHTML(t, opts={}){
     <div class="subtasks">
       ${t.subtasks.map((st,i)=>`
         <label class="subtask">
-          <input type="checkbox" ${st.done?'checked':''} ${(isCompleted||isCompletedLate)?'disabled':''} onchange="toggleSubtask('${t.id}',${i})">
+          <input type="checkbox" ${st.done?'checked':''} ${(isCompleted||isCompletedLate||inBlock)?'disabled':''} onchange="toggleSubtask('${t.id}',${i})">
           <span>${escapeHtml(st.text)}</span>
         </label>
       `).join('')}
@@ -1101,9 +1330,12 @@ function taskItemHTML(t, opts={}){
   const lateInfo = isCompletedLate
     ? `<div class="missed-info" style="background:var(--success-soft);color:var(--success-text);">✓ أُنجزت متأخرة — الأصل: ${formatDateAr(t.originalDate)} ${t.originalStart} → ${t.originalEnd}</div>`
     : '';
+  const blockInfo = inBlock && !(isCompleted || isCompletedLate)
+    ? `<div class="missed-info" style="background:var(--block-soft);color:var(--block);">⏱️ داخل فترة حصة/تنقل — ليست مهمة منزلية</div>`
+    : '';
 
   return `
-    <div class="task-item ${(isCompleted||isCompletedLate)?'completed':''} ${needsMakeup?'missed':''} ${isCurrent?'current':''}">
+    <div class="task-item ${(isCompleted||isCompletedLate)?'completed':''} ${needsMakeup?'missed':''} ${isCurrent?'current':''} ${inBlock?'in-block':''}">
       <div class="task-check ${checkClass}" onclick="toggleTaskComplete('${t.id}')" title="${(isCompleted||isCompletedLate)?'تراجع':'إنجاز'}">${stIcon}</div>
       <div class="task-body">
         <div class="task-inspiration ${isFridayTask?'friday':''}">${escapeHtml(insp)}</div>
@@ -1117,15 +1349,19 @@ function taskItemHTML(t, opts={}){
         </div>
         ${missedInfo}
         ${lateInfo}
+        ${blockInfo}
         ${subtasksHTML}
       </div>
       <div style="display:flex;flex-direction:column;gap:6px;">
-        ${!(isCompleted||isCompletedLate) ? `<button class="btn btn-success btn-sm" onclick="completeTask('${t.id}')" title="إنجاز">✓</button>` : `<button class="btn btn-outline btn-sm" onclick="undoComplete('${t.id}')" title="تراجع">↺</button>`}
+        ${!(isCompleted||isCompletedLate) && !inBlock ? `<button class="btn btn-success btn-sm" onclick="completeTask('${t.id}')" title="إنجاز">✓</button>` : ''}
+        ${!(isCompleted||isCompletedLate) && inBlock ? `<span class="task-tag tag-block">⏱️ block</span>` : ''}
+        ${(isCompleted||isCompletedLate) ? `<button class="btn btn-outline btn-sm" onclick="undoComplete('${t.id}')" title="تراجع">↺</button>` : ''}
         <button class="btn btn-outline btn-sm" onclick="openTaskModal('${t.id}')" title="تعديل">✏️</button>
       </div>
     </div>`;
 }
 
+/* ============ Timeline ============ */
 function timelineItemHTML(t){
   const s = SUBJECTS[t.subject] || {name:t.subject, icon:''};
   const cls = (t.status === 'completed' || t.status === 'completed_late') ? 'completed' :
@@ -1146,6 +1382,18 @@ function timelineItemHTML(t){
   </div>`;
 }
 
+function blockTimelineHTML(b){
+  const s = SUBJECTS[b.subject] || {name:b.subject, icon:''};
+  return `<div class="timeline-item block">
+    <div class="t-time">${b.start} → ${b.end}${b.maxEnd?` (→${b.maxEnd})`:''}</div>
+    <div class="t-line"></div>
+    <div class="t-body">
+      <div style="font-size:13.5px;font-weight:700;margin-bottom:3px;">${b.icon||'🚌'} ${escapeHtml(b.title)}</div>
+      <div style="font-size:11.5px;color:var(--block);font-weight:700;">⏱️ فترة حصة/تنقل — ليست دراسة منزلية${b.flexible?' · مرنة':''}</div>
+    </div>
+  </div>`;
+}
+
 /* ============ Dashboard ============ */
 function renderDashboard(){
   syncTaskStatuses();
@@ -1156,11 +1404,18 @@ function renderDashboard(){
 
   const t = todayStr();
   const excl = ['prayer','sleep','routine'];
-  const todayTasks = state.tasks
+  const todayBlocks = getBlocksForDate(t);
+
+  // بناء timeline موحد: blocks + tasks مرتّبة زمنيًا
+  const items = [];
+  todayBlocks.forEach(b => items.push({ kind:'block', time: timeToMin(b.start), data:b }));
+  state.tasks
     .filter(x => x.date === t && !excl.includes(x.type))
-    .sort((a,b)=>timeToMin(a.startTime)-timeToMin(b.startTime));
-  $('#todayTimeline').innerHTML = todayTasks.length
-    ? todayTasks.map(timelineItemHTML).join('')
+    .forEach(x => items.push({ kind:'task', time: timeToMin(x.startTime), data:x }));
+  items.sort((a,b) => a.time - b.time);
+
+  $('#todayTimeline').innerHTML = items.length
+    ? items.map(it => it.kind === 'block' ? blockTimelineHTML(it.data) : timelineItemHTML(it.data)).join('')
     : '<div class="empty-state"><div class="big">🌿</div>لا توجد مهام لهذا اليوم.</div>';
 
   // القادم
@@ -1216,11 +1471,17 @@ function renderMyTasks(){
   syncTaskStatuses();
   const t = todayStr();
   const excl = ['prayer','sleep','routine'];
-  const today = state.tasks
+  const todayBlocks = getBlocksForDate(t);
+
+  const items = [];
+  todayBlocks.forEach(b => items.push({ kind:'block', time: timeToMin(b.start), data:b }));
+  state.tasks
     .filter(x => x.date === t && !excl.includes(x.type))
-    .sort((a,b)=>timeToMin(a.startTime)-timeToMin(b.startTime));
-  $('#myTodayTimeline').innerHTML = today.length
-    ? today.map(timelineItemHTML).join('')
+    .forEach(x => items.push({ kind:'task', time: timeToMin(x.startTime), data:x }));
+  items.sort((a,b) => a.time - b.time);
+
+  $('#myTodayTimeline').innerHTML = items.length
+    ? items.map(it => it.kind === 'block' ? blockTimelineHTML(it.data) : timelineItemHTML(it.data)).join('')
     : '<div class="empty-state"><div class="big">🌿</div>لا توجد مهام لهذا اليوم.</div>';
   $('#tasksTodayLabel').textContent = formatDateAr(t);
 
@@ -1232,43 +1493,46 @@ function renderMyTasks(){
     : '<div class="empty-state">لا توجد مهام مطابقة.</div>';
 }
 
-/* ============ Missed / Makeup Page ============ */
+/* ============ Missed Page ============ */
 function renderMissedPage(){
   syncTaskStatuses();
   const missed = getMakeupTasks();
-  const fridayStr = getNextFriday();
-  const fridayTasks = getMakeupForFriday(fridayStr);
-  const todayF = todayStr() === fridayStr;
+  const restDay = state.settings.restDay;
+  const restDayName = DAYS_AR[restDay];
+  $('#makeupDayBadge').textContent = `🟢 يوم التعويض: توزيع ذكي (يوم الراحة: ${restDayName})`;
 
   if(!missed.length){
     $('#missedPageContent').innerHTML = `
       <div class="empty-state" style="padding:30px 18px;">
         <div class="big">🟢</div>
         <div style="font-size:16px;font-weight:900;margin-bottom:6px;">لا توجد مهام تحتاج قضاء</div>
-        <div style="font-size:13px;">الجمعة القادمة (${formatDateAr(fridayStr)}) يوم راحة كاملة 🌿</div>
+        <div style="font-size:13px;">النظام يوزّع التعويضات على الأيام الأخف 🌿</div>
       </div>`;
     return;
   }
 
   let html = `<div style="margin-bottom:14px;padding:14px 18px;background:var(--friday-soft);border-radius:12px;border:1px dashed var(--friday-border);">
     <div style="font-weight:900;color:var(--primary-dark);margin-bottom:4px;">
-      ${todayF?'🟢 اليوم يوم التعويض':'🟢 يوم التعويض المجدول: '+formatDateAr(fridayStr)}
+      🟢 توزيع ذكي للتعويضات
     </div>
-    <div style="font-size:13px;color:var(--text-muted);">لديك ${missed.length} مهمة تحتاج قضاء. أنجزيها بهدوء.</div>
+    <div style="font-size:13px;color:var(--text-muted);">لديك ${missed.length} مهمة. النظام يوزّعها على الأيام الأخف، ويتجنب يوم الراحة (${restDayName}).</div>
   </div>`;
 
-  // تجميع حسب تاريخ التعويض
   const byDate = {};
   missed.forEach(x => {
-    const d = x.makeupDate || fridayStr;
+    const d = x.makeupDate || '—';
     if(!byDate[d]) byDate[d] = [];
     byDate[d].push(x);
   });
 
   Object.entries(byDate).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([date, list])=>{
+    const isFriday = date !== '—' && dayOfWeek(date) === 5;
+    const isRest = date !== '—' && dayOfWeek(date) === restDay;
     html += `<div style="margin-bottom:18px;">
       <div style="font-size:14px;font-weight:900;margin-bottom:10px;color:var(--primary-dark);">
-        📅 ${formatDateAr(date)} ${date===fridayStr?'🟢 يوم التعويض':''}
+        📅 ${date === '—' ? 'لم تُجدول' : formatDateAr(date)}
+        ${isFriday?'🟢 يوم التعويض':''}
+        ${isRest?'🛌 يوم راحة':''}
       </div>
       <div class="task-list">
         ${list.map(x=>taskItemHTML(x)).join('')}
@@ -1284,33 +1548,55 @@ function renderSchedule(){
   const now = new Date();
   const sunday = new Date(now); sunday.setDate(now.getDate() - now.getDay());
   const t = todayStr();
-  const fridayStr = getNextFriday();
+  const restDay = state.settings.restDay;
   let html = '';
   for(let i=0; i<7; i++){
     const d = new Date(sunday); d.setDate(sunday.getDate()+i);
     const ds = dateStr(d);
-    const isFriday = d.getDay() === 5;
+    const dow = d.getDay();
+    const isRest = dow === restDay;
+    const isFriday = dow === 5;
+    const dayBlocks = getBlocksForDate(ds);
     const dayTasks = state.tasks
       .filter(x => x.date === ds && !['prayer','sleep','routine'].includes(x.type))
       .sort((a,b)=>timeToMin(a.startTime)-timeToMin(b.startTime));
 
-    const makeupForDay = isFriday
-      ? state.tasks.filter(x => x.status === 'makeup_scheduled' && x.makeupDate === ds && x.originalDate !== ds)
-      : [];
-    const allDay = [...dayTasks, ...makeupForDay];
+    const makeupForDay = state.tasks.filter(x => x.status === 'makeup_scheduled' && x.makeupDate === ds && x.originalDate !== ds);
 
-    const cardClass = isFriday ? 'card schedule-day friday-card' : 'card schedule-day';
+    // ترتيب زمني موحد
+    const rows = [];
+    dayBlocks.forEach(b => rows.push({ kind:'block', time: timeToMin(b.start), data:b }));
+    dayTasks.forEach(x => rows.push({ kind:'task', time: timeToMin(x.startTime), data:x }));
+    makeupForDay.forEach(x => rows.push({ kind:'makeup', time: timeToMin(x.startTime), data:x }));
+    rows.sort((a,b) => a.time - b.time);
+
+    const cardClass = isRest ? 'card schedule-day friday-card' : (isFriday ? 'card schedule-day friday-card' : 'card schedule-day');
+    const badges = [];
+    if(isFriday) badges.push(`<span class="friday-badge">🟢 يوم التعويض</span>`);
+    if(isRest) badges.push(`<span class="rest-badge">🛌 يوم الراحة</span>`);
+    if(ds === t) badges.push(`<span class="friday-badge" style="background:var(--primary);">اليوم</span>`);
+
     html += `<div class="${cardClass}">
       <h3>
-        <span class="day-dot" style="${isFriday?'background:var(--friday)':''}"></span>
-        ${DAYS_AR[d.getDay()]} — ${formatDateAr(ds)}
-        ${isFriday?`<span class="friday-badge">🟢 يوم التعويض</span>`:''}
-        ${ds === t?`<span class="friday-badge" style="background:var(--primary);">اليوم</span>`:''}
+        <span class="day-dot" style="${isRest?'background:var(--info)':isFriday?'background:var(--friday)':''}"></span>
+        ${DAYS_AR[dow]} — ${formatDateAr(ds)}
+        ${badges.join(' ')}
       </h3>
       <table class="schedule-table">
         <thead><tr><th>الوقت</th><th>المادة</th><th>المهمة</th><th>الحالة</th></tr></thead>
         <tbody>
-          ${allDay.length ? allDay.map(x=>{
+          ${rows.length ? rows.map(r=>{
+            if(r.kind === 'block'){
+              const b = r.data;
+              const s = SUBJECTS[b.subject] || {name:b.subject, icon:''};
+              return `<tr class="block-row">
+                <td class="time-cell">${b.start} → ${b.end}${b.maxEnd?` (→${b.maxEnd})`:''}</td>
+                <td>${b.icon} ${escapeHtml(s.name)}</td>
+                <td>${escapeHtml(b.title)}</td>
+                <td>⏱️ حصة/تنقل</td>
+              </tr>`;
+            }
+            const x = r.data;
             const s = SUBJECTS[x.subject] || {name:x.subject, icon:''};
             const st = (x.status === 'completed') ? '✓ مكتملة' :
                        (x.status === 'completed_late') ? '✓ متأخرة' :
@@ -1318,15 +1604,15 @@ function renderSchedule(){
                        x.status === 'needs_makeup' ? '⚠️ تحتاج قضاء' :
                        x.status === 'makeup_scheduled' ? '🔄 مجدول للتعويض' : '□ مجدولة';
             const rowClass = (ds === t && x.status === 'current') ? 'current-row' : '';
-            const isMakeupRow = x.makeupDate === ds && x.originalDate !== ds;
+            const isMakeup = r.kind === 'makeup';
             return `<tr class="${rowClass}" onclick="openTaskModal('${x.id}')">
               <td class="time-cell">${x.startTime} → ${x.endTime}</td>
-              <td>${s.icon} ${escapeHtml(s.name)}${isMakeupRow?' <span class="task-tag" style="background:var(--warning-soft);color:var(--warning-text);">تعويض</span>':''}</td>
+              <td>${s.icon} ${escapeHtml(s.name)}${isMakeup?' <span class="task-tag" style="background:var(--warning-soft);color:var(--warning-text);">تعويض</span>':''}</td>
               <td>${escapeHtml(x.title)}</td>
               <td>${st}</td>
             </tr>`;
           }).join('') : `<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:18px;">
-            ${isFriday?'🟢 لا توجد مهام تعويض — الجمعة يوم راحة':'لا توجد مهام'}
+            ${isRest?'🛌 يوم راحة — لا مهام':isFriday?'🟢 لا توجد مهام تعويض':'لا توجد مهام'}
           </td></tr>`}
         </tbody>
       </table>
@@ -1343,20 +1629,23 @@ function renderCalendar(){
   const first = new Date(y,m,1).getDay();
   const daysInMonth = new Date(y,m+1,0).getDate();
   const t = todayStr();
+  const restDay = state.settings.restDay;
   let html = '';
   for(let i=0; i<first; i++) html += '<div class="cal-day empty"></div>';
   for(let d=1; d<=daysInMonth; d++){
     const ds = `${y}-${pad(m+1)}-${pad(d)}`;
     const dow = new Date(y,m,d).getDay();
     const isFriday = dow === 5;
+    const isRest = dow === restDay;
     const hasTasks = state.tasks.some(x => x.date === ds);
     const hasMakeup = state.tasks.some(x => x.makeupDate === ds && x.originalDate !== ds && x.status === 'makeup_scheduled');
     const isToday = ds === t;
     const cls = ['cal-day'];
     if(isToday) cls.push('today');
     if(isFriday && !isToday) cls.push('friday');
+    if(isRest && !isToday && !isFriday) cls.push('rest');
     if(hasTasks || hasMakeup) cls.push('has-tasks');
-    if(hasMakeup && !isFriday) cls.push('makeup-day');
+    if(hasMakeup && !isFriday && !isRest) cls.push('makeup-day');
     html += `<div class="${cls.join(' ')}" onclick="selectCalDay('${ds}')"><span>${d}</span></div>`;
   }
   $('#calDays').innerHTML = html;
@@ -1367,39 +1656,64 @@ function renderCalendar(){
 function selectCalDay(ds){ state.selectedCalDate = ds; renderCalSelected(); }
 function renderCalSelected(){
   const ds = state.selectedCalDate;
-  const isFriday = dayOfWeek(ds) === 5;
+  const dow = dayOfWeek(ds);
+  const isFriday = dow === 5;
+  const isRest = dow === state.settings.restDay;
   let title = `📌 مهام ${formatDateAr(ds)}`;
   if(isFriday) title += ' — 🟢 يوم التعويض';
+  if(isRest) title += ' — 🛌 يوم الراحة';
   $('#calSelectedLabel').innerHTML = title;
 
+  const dayBlocks = getBlocksForDate(ds);
   const regular = state.tasks
     .filter(x => x.date === ds && !['prayer','sleep','routine'].includes(x.type))
     .sort((a,b)=>timeToMin(a.startTime)-timeToMin(b.startTime));
-
   const makeup = state.tasks
     .filter(x => x.makeupDate === ds && x.originalDate !== ds && x.status === 'makeup_scheduled');
 
-  const all = [...regular, ...makeup];
+  const items = [];
+  dayBlocks.forEach(b => items.push({ kind:'block', time: timeToMin(b.start), data:b }));
+  regular.forEach(x => items.push({ kind:'task', time: timeToMin(x.startTime), data:x }));
+  makeup.forEach(x => items.push({ kind:'makeup', time: timeToMin(x.startTime), data:x }));
+  items.sort((a,b) => a.time - b.time);
 
-  if(!all.length){
-    $('#calSelectedTasks').innerHTML = isFriday
-      ? '<div class="empty-state"><div class="big">🟢</div>لا توجد مهام — الجمعة يوم راحة.</div>'
+  if(!items.length){
+    $('#calSelectedTasks').innerHTML = isRest
+      ? '<div class="empty-state"><div class="big">🛌</div>يوم راحة — لا مهام.</div>'
+      : isFriday
+      ? '<div class="empty-state"><div class="big">🟢</div>لا مهام.</div>'
       : '<div class="empty-state">لا توجد مهام في هذا اليوم.</div>';
     return;
   }
 
   let html = '';
-  if(makeup.length && isFriday){
+  if(makeup.length){
     html += `<div style="margin-bottom:14px;">
       <div style="font-size:13.5px;font-weight:900;color:var(--primary-dark);margin-bottom:10px;">🔄 مهام التعويض (${makeup.length})</div>
       <div class="task-list">${makeup.map(x=>taskItemHTML(x)).join('')}</div>
     </div>`;
   }
+  if(dayBlocks.length){
+    html += `<div style="margin-bottom:14px;">
+      <div style="font-size:13.5px;font-weight:900;color:var(--block);margin-bottom:10px;">⏱️ فترات حصة/تنقل</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        ${dayBlocks.map(b=>`
+          <div class="block-card">
+            <div class="block-icon">${b.icon||'🚌'}</div>
+            <div class="block-body">
+              <div class="block-title">${escapeHtml(b.title)}</div>
+              <div class="block-range">${b.start} → ${b.end}${b.maxEnd?` (قد تتأخر حتى ${b.maxEnd})`:''}</div>
+              ${b.note?`<div class="block-sub" style="margin-top:4px;">${escapeHtml(b.note)}</div>`:''}
+              ${b.flexible?`<span class="block-flex">مرنة</span>`:''}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  }
   if(regular.length){
-    if(makeup.length && isFriday){
-      html += `<div style="font-size:13.5px;font-weight:900;color:var(--primary-dark);margin:14px 0 10px;">📅 مهام اليوم</div>`;
-    }
-    html += `<div class="task-list">${regular.map(x=>taskItemHTML(x)).join('')}</div>`;
+    html += `<div style="font-size:13.5px;font-weight:900;color:var(--primary-dark);margin:14px 0 10px;">📅 المهام</div>
+      <div class="task-list">${regular.map(x=>taskItemHTML(x)).join('')}</div>`;
   }
   $('#calSelectedTasks').innerHTML = html;
 }
@@ -1408,39 +1722,38 @@ function renderCalSelected(){
 function toggleTaskComplete(id){
   const t = state.tasks.find(x => x.id === id);
   if(!t) return;
+  const blocks = getBlocksForDate(t.date);
+  if(isRangeOverlappingBlock(t.startTime, t.endTime, blocks)){
+    toast('⏱️ داخل فترة حصة/تنقل', 'لا يمكن إنجاز مهمة منزلية داخل block.', 'warning');
+    return;
+  }
   if(t.status === 'completed' || t.status === 'completed_late') undoComplete(id);
   else completeTask(id);
 }
-
 function completeTask(id){
   const t = state.tasks.find(x => x.id === id);
   if(!t) return;
+  const blocks = getBlocksForDate(t.date);
+  if(isRangeOverlappingBlock(t.startTime, t.endTime, blocks) && !t.autoCompleted){
+    toast('⏱️ فترة حصة/تنقل', 'لا يمكن إنجاز مهمة منزلية داخل block.', 'warning');
+    return;
+  }
   const now = new Date();
   const nowStr = now.toISOString();
   const todayS = todayStr();
   const currentMin = nowMin();
   const endMin = timeToMin(t.endTime);
 
-  // تحديد نوع الإنجاز:
-  // - إذا كانت needs_makeup أو makeup_scheduled → completed_late
-  // - إذا كان تاريخها قبل اليوم → completed_late
-  // - إذا كانت اليوم وانتهى وقتها → completed_late
-  // - وإلا → completed
   let newStatus = 'completed';
-  if(t.status === 'needs_makeup' || t.status === 'makeup_scheduled'){
-    newStatus = 'completed_late';
-  } else if(t.date < todayS){
-    newStatus = 'completed_late';
-  } else if(t.date === todayS && currentMin >= endMin){
-    newStatus = 'completed_late';
-  }
+  if(t.status === 'needs_makeup' || t.status === 'makeup_scheduled') newStatus = 'completed_late';
+  else if(t.date < todayS) newStatus = 'completed_late';
+  else if(t.date === todayS && currentMin >= endMin) newStatus = 'completed_late';
 
   t.status = newStatus;
   t.completedAt = nowStr;
   t.completedDate = todayS;
   t.needsMakeup = false;
   (t.subtasks||[]).forEach(st => st.done = true);
-
   save();
 
   if(newStatus === 'completed_late'){
@@ -1460,18 +1773,15 @@ function completeTask(id){
 
   rerenderCurrentPage();
 }
-
 function undoComplete(id){
   const t = state.tasks.find(x => x.id === id);
   if(!t) return;
   t.completedAt = null;
   t.completedDate = null;
   (t.subtasks||[]).forEach(st => st.done = false);
-  // إعادة الحالة الصحيحة حسب الوقت
   const t_date = todayStr();
   const n = nowMin();
   if(t.status === 'completed_late'){
-    // إذا كانت متأخرة → أعِدها إلى needs_makeup (فقط إذا كانت تحتاج قضاء)
     t.status = 'needs_makeup';
     t.needsMakeup = true;
   } else if(t.date > t_date){
@@ -1491,11 +1801,12 @@ function undoComplete(id){
   toast('↺ تراجع', 'أُعيدت المهمة إلى حالتها', '');
   rerenderCurrentPage();
 }
-
 function toggleSubtask(taskId, idx){
   const t = state.tasks.find(x => x.id === taskId);
   if(!t || !t.subtasks[idx]) return;
   if(t.status === 'completed' || t.status === 'completed_late') return;
+  const blocks = getBlocksForDate(t.date);
+  if(isRangeOverlappingBlock(t.startTime, t.endTime, blocks)) return;
   t.subtasks[idx].done = !t.subtasks[idx].done;
   if(t.subtasks.length && t.subtasks.every(st => st.done)){
     save(); completeTask(t.id); return;
@@ -1503,16 +1814,13 @@ function toggleSubtask(taskId, idx){
   save(); rerenderCurrentPage();
 }
 
+/* ============ Task Modal ============ */
 function openTaskModal(id){
   const t = state.tasks.find(x => x.id === id);
   if(!t) return;
   const statuses = [
-    ['pending','مجدولة'],
-    ['current','الآن'],
-    ['completed','مكتملة'],
-    ['completed_late','مكتملة متأخرة'],
-    ['needs_makeup','تحتاج قضاء'],
-    ['makeup_scheduled','مجدولة للتعويض'],
+    ['pending','مجدولة'],['current','الآن'],['completed','مكتملة'],
+    ['completed_late','مكتملة متأخرة'],['needs_makeup','تحتاج قضاء'],['makeup_scheduled','مجدولة للتعويض'],
   ];
   openModal(`
     <div class="modal-head"><h3>✏️ ${escapeHtml(t.title)}</h3><button class="modal-close" onclick="closeModal()">✕</button></div>
@@ -1564,31 +1872,92 @@ function saveTaskEdit(id){
   const newStatus = $('#mStatus').value;
   const wasCompleted = t.status === 'completed' || t.status === 'completed_late';
   t.status = newStatus;
-
   if((newStatus === 'completed' || newStatus === 'completed_late') && !wasCompleted){
     t.completedAt = new Date().toISOString();
     t.completedDate = todayStr();
     t.needsMakeup = false;
   } else if(newStatus !== 'completed' && newStatus !== 'completed_late'){
-    t.completedAt = null;
-    t.completedDate = null;
+    t.completedAt = null; t.completedDate = null;
   }
-
   if(newStatus === 'needs_makeup' || newStatus === 'makeup_scheduled'){
     t.needsMakeup = true;
     if(!t.makeupDate){
-      const fridayStr = getNextFriday();
-      t.makeupDate = dayOfWeek(t.date) === 5 ? t.date : fridayStr;
+      t.makeupDate = findBestMakeupDate(t);
       t.makeupScheduledAt = new Date().toISOString();
       t.status = 'makeup_scheduled';
     }
   }
-  if(newStatus === 'completed' || newStatus === 'completed_late'){
-    // إزالة علامة الحاجة للتعويض
-    t.needsMakeup = false;
-  }
   save(); closeModal();
   toast('💾 تم الحفظ', '', 'success');
+  rerenderCurrentPage();
+}
+
+/* ============ Blocks Editor ============ */
+function openBlocksEditor(){
+  const rows = state.blocks.map(b => `
+    <div class="form-row" style="margin-bottom:10px;padding:10px;background:var(--surface-2);border-radius:10px;" data-block-id="${b.id}">
+      <div>
+        <label style="font-size:11px;font-weight:800;color:var(--text-muted);">الأيام</label>
+        <select class="block-days" multiple style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);">
+          ${DAYS_AR.map((d,i)=>`<option value="${i}" ${b.days.includes(i)?'selected':''}>${d}</option>`).join('')}
+        </select>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:800;color:var(--text-muted);">العنوان</label>
+        <input type="text" class="block-title-inp" value="${escapeHtml(b.title)}" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);">
+      </div>
+      <div class="form-row">
+        <div>
+          <label style="font-size:11px;font-weight:800;color:var(--text-muted);">من</label>
+          <input type="time" class="block-start" value="${b.start}" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);">
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:800;color:var(--text-muted);">إلى</label>
+          <input type="time" class="block-end" value="${b.end}" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);">
+        </div>
+      </div>
+      <div>
+        <label style="font-size:11px;font-weight:800;color:var(--text-muted);">أقصى تأخير</label>
+        <input type="time" class="block-maxend" value="${b.maxEnd||b.end}" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);">
+      </div>
+    </div>
+  `).join('');
+  openModal(`
+    <div class="modal-head"><h3>⚙️ تعديل القيود الواقعية</h3><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:14px;line-height:1.8;">
+      هذه الفترات تعتبر <strong>حصص + تنقل</strong>، ولا يضع النظام فيها مهام منزلية.
+      استخدمي "أقصى تأخير" إذا كانت الحصة قد تتأخر.
+    </p>
+    ${rows}
+    <div style="display:flex;gap:10px;margin-top:14px;">
+      <button class="btn btn-primary" onclick="saveBlocks()">💾 حفظ</button>
+      <button class="btn btn-outline" onclick="closeModal()">إلغاء</button>
+      <button class="btn btn-outline btn-sm" onclick="resetBlocks()">↺ استعادة الافتراضي</button>
+    </div>
+  `);
+}
+function saveBlocks(){
+  const rows = $$('.modal [data-block-id]');
+  rows.forEach(row => {
+    const id = row.dataset.blockId;
+    const b = state.blocks.find(x => x.id === id);
+    if(!b) return;
+    const days = [...row.querySelector('.block-days').selectedOptions].map(o => parseInt(o.value));
+    b.days = days;
+    b.title = row.querySelector('.block-title-inp').value;
+    b.start = row.querySelector('.block-start').value;
+    b.end = row.querySelector('.block-end').value;
+    b.maxEnd = row.querySelector('.block-maxend').value;
+  });
+  save(); closeModal();
+  toast('💾 تم الحفظ', 'تم تحديث القيود الواقعية', 'success');
+  rerenderCurrentPage();
+}
+function resetBlocks(){
+  if(!confirm('استعادة القيود الافتراضية؟')) return;
+  state.blocks = JSON.parse(JSON.stringify(DEFAULT_BLOCKS));
+  save(); closeModal();
+  toast('↺ تمت الاستعادة', '', 'success');
   rerenderCurrentPage();
 }
 
@@ -1664,14 +2033,17 @@ function renderProgress(){
   for(let i=0; i<7; i++){
     const d = new Date(sunday); d.setDate(sunday.getDate()+i);
     const ds = dateStr(d);
-    const isFriday = d.getDay() === 5;
+    const dow = d.getDay();
+    const isRest = dow === state.settings.restDay;
+    const isFriday = dow === 5;
     const dayTasks = state.tasks.filter(x => x.date === ds && !['prayer','sleep','break','school','routine'].includes(x.type));
     const done = dayTasks.filter(x => x.status === 'completed' || x.status === 'completed_late').length;
     const pct = dayTasks.length ? Math.round((done/dayTasks.length)*100) : 0;
+    const barColor = isRest ? 'var(--info)' : isFriday ? 'var(--friday)' : 'var(--primary)';
     bars += `<div class="week-bar">
       <div style="font-size:10.5px;font-weight:800;">${pct}%</div>
-      <div class="bar" style="height:${Math.max(pct,4)}%;${isFriday?'background:var(--friday);':''}"></div>
-      <div class="bar-label">${DAYS_AR[d.getDay()].slice(0,3)}</div>
+      <div class="bar" style="height:${Math.max(pct,4)}%;background:${barColor};"></div>
+      <div class="bar-label">${DAYS_AR[dow].slice(0,3)}${isRest?' 🛌':''}</div>
     </div>`;
   }
   $('#weekBars').innerHTML = bars;
@@ -1713,24 +2085,23 @@ function renderProgress(){
     `).join('')
     : '<div class="empty-state">لا يوجد سجل بعد.</div>';
 }
-function renderSettingsPage(){}
+function renderSettingsPage(){
+  $('#setSleep').value = state.settings.sleep;
+  $('#setWake').value = state.settings.wake;
+  $('#setRestDay').value = state.settings.restDay;
+  $('#setSafetyMargin').value = state.settings.safetyMargin;
+}
 
 /* ============ Live Clock ============ */
 function updateLiveClock(){
   const d = new Date();
-  const hh = pad(d.getHours());
-  const mm = pad(d.getMinutes());
-  const ss = pad(d.getSeconds());
   const el = $('#liveClockText');
-  if(el) el.textContent = `${hh}:${mm}:${ss}`;
+  if(el) el.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
 }
 
-/* ==========================================================
-   Tick — كل ثانية للساعة، وكل دقيقة للمزامنة
-   ========================================================== */
+/* ============ Tick ============ */
 function tick(){
   updateLiveClock();
-
   const now = new Date();
   const minuteKey = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}-${now.getHours()}-${now.getMinutes()}`;
   if(state.lastSyncKey === minuteKey) return;
@@ -1738,11 +2109,8 @@ function tick(){
 
   const changed = syncTaskStatuses();
   const p = currentPage();
-  if(['dashboard','tasks','missed','schedule','calendar','progress'].includes(p)){
-    rerenderPage(p);
-  } else {
-    renderStats();
-  }
+  if(['dashboard','tasks','missed','schedule','calendar','progress'].includes(p)) rerenderPage(p);
+  else renderStats();
   updatePageSubtitle();
 }
 
@@ -1750,8 +2118,6 @@ function tick(){
 function init(){
   load();
   buildInitialData();
-
-  // أول مزامنة فورية عند الفتح — يكتشف كل الحالات
   syncTaskStatuses();
   save();
 
@@ -1783,8 +2149,14 @@ function init(){
   $('#saveSettings')?.addEventListener('click', ()=>{
     state.settings.sleep = $('#setSleep').value;
     state.settings.wake = $('#setWake').value;
-    save(); toast('💾 تم الحفظ', '', 'success');
+    state.settings.restDay = parseInt($('#setRestDay').value);
+    state.settings.safetyMargin = parseInt($('#setSafetyMargin').value) || 15;
+    save(); toast('💾 تم الحفظ', 'تم تحديث الإعدادات', 'success');
+    rerenderCurrentPage();
   });
+
+  $('#editBlocksBtn')?.addEventListener('click', openBlocksEditor);
+
   $('#resetData')?.addEventListener('click', ()=>{
     if(confirm('إعادة تعيين جميع البيانات؟')){
       localStorage.removeItem(STORAGE_KEY); location.reload();
@@ -1793,13 +2165,8 @@ function init(){
 
   navigate('dashboard');
   updateLiveClock();
-
-  // الساعة كل ثانية + فحص الحالات كل دقيقة
   setInterval(tick, 1000);
   setTimeout(tick, 1500);
-
-  // فحص إضافي بعد 30 ثانية (في حال كانت مهمة على وشك الانتهاء)
-  setTimeout(syncTaskStatuses, 30000);
 }
 
 document.addEventListener('DOMContentLoaded', init);
